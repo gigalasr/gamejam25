@@ -15,6 +15,10 @@ run/main_scene="res://Levels/01/01.tscn"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SignalBus="*res://Core-Skripts/SignalBus.cs"
+
 [dotnet]
 
 project/assembly_name="gamejam"
@@ -24,6 +28,7 @@ project/assembly_name="gamejam"
 Player="Player Object"
 Camera=""
 PlayerNeck=""
+DebugPrint=""
 
 [input]
 
@@ -67,3 +72,8 @@ down={
 global_illumination/voxel_gi/quality=1
 anti_aliasing/quality/msaa_3d=2
 environment/defaults/default_environment="uid://drp3oyo3t2fcf"
+gravity={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
+]
+}

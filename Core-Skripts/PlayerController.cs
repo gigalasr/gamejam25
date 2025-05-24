@@ -5,11 +5,11 @@ public partial class PlayerController : CharacterBody3D
 {
     [ExportCategory("Movement")]
     [Export]
-	public float Speed = 5.0f;
+    public float Speed = 5.0f;
     [Export]
     public float runningSpeed = 7.5f;
     [Export]
-	public float JumpVelocity = 4.5f;
+    public float JumpVelocity = 4.5f;
     [ExportCategory("Actions")]
     [Export]
     public bool canJump = true;
@@ -19,14 +19,27 @@ public partial class PlayerController : CharacterBody3D
 
     private bool hasDoubleJumped = false;
 
-	public override void _PhysicsProcess(double delta)
+    private float gravityModifier = 1;
+    public float playerGravityModifier = 1;
+    private bool ignoreGravityInvert = false;
+
+    private Label debugLabel;
+
+    public override void _Ready()
+    {
+        SignalBus.Instance.OnGravityInvert += InvertGravity;
+        debugLabel = GetTree().GetFirstNodeInGroup("DebugPrint") as Label;
+    }
+
+    public override void _PhysicsProcess(double delta)
     {
         Vector3 velocity = Velocity;
+        debugLabel.Text = "Floor: " + IsOnFloor() + ", Ceiling:" + IsOnCeiling();
 
         // Add the gravity.
-        if (!IsOnFloor())
+        if (!OnFloor())
         {
-            velocity += GetGravity() * (float)delta;
+            velocity += playerGravityModifier * GetGravity() * (float)delta;
         }
         else
         {
@@ -36,14 +49,14 @@ public partial class PlayerController : CharacterBody3D
         // Handle Jump.
         if (Input.IsActionJustPressed("up"))
         {
-            if (IsOnFloor())
+            if (OnFloor())
             {
-                velocity.Y = JumpVelocity;
+                velocity.Y =  playerGravityModifier * JumpVelocity;
             }
             else if (canDoubleJump && !hasDoubleJumped)
             {
                 hasDoubleJumped = true;
-                velocity.Y = JumpVelocity;
+                velocity.Y = playerGravityModifier * JumpVelocity;
             }
         }
 
@@ -64,5 +77,41 @@ public partial class PlayerController : CharacterBody3D
 
         Velocity = velocity;
         MoveAndSlide();
+    }
+
+    private void InvertGravity()
+    {
+        gravityModifier *= -1;
+        if (!ignoreGravityInvert)
+        {
+            playerGravityModifier = gravityModifier;
+            RotateObjectLocal(Vector3.Right, Mathf.Pi);
+        }
+            
+        GD.Print(playerGravityModifier);
+    }
+
+    private bool OnFloor()
+    {
+        if (playerGravityModifier == 1)
+        {
+            return IsOnFloor();
+        }
+        else
+        {
+            return IsOnCeiling();
+        }
+    }
+
+    private void IgnoreGravityInvert()
+    {
+        ignoreGravityInvert = true;
+    }
+
+    private void RecogniseGravityInvert()
+    {
+        ignoreGravityInvert = false;
+        if (playerGravityModifier != gravityModifier) RotateObjectLocal(Vector3.Right, Mathf.Pi);
+        playerGravityModifier = gravityModifier;
     }
 }
