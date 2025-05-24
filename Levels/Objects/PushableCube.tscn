@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0uw2dlg45vbi"]
+
+[ext_resource type="Script" uid="uid://bpdix0xycyfhp" path="res://Core-Skripts/GravityInverter.cs" id="1_oj1w1"]
+[ext_resource type="PackedScene" uid="uid://bxjivelbi6gpf" path="res://Levels/Objects/cube_2.tscn" id="2_oj1w1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nlpgw"]
+size = Vector3(4, 4, 4)
+
+[node name="Cube" type="RigidBody3D"]
+mass = 50.0
+script = ExtResource("1_oj1w1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_nlpgw")
+
+[node name="Cube2" parent="." instance=ExtResource("2_oj1w1")]

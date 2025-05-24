@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnsbtiswvhgw3"]
+
+[ext_resource type="Script" uid="uid://c64mnv4ddcrrw" path="res://Core-Skripts/DimensionHud.cs" id="1_kyx6o"]
+[ext_resource type="Texture2D" uid="uid://w1oo6i1qm3s7" path="res://icon.svg" id="2_4gmem"]
+
+[node name="DimensionHud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_kyx6o")
+
+[node name="Dim" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+texture = ExtResource("2_4gmem")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -28.0
+offset_top = -98.0
+offset_right = 28.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Hint" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="ShiftsLeft" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1

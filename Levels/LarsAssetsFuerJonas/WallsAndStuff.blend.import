@@ -1,0 +1,234 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://j3be6trhdbl0"
+path="res://.godot/imported/WallsAndStuff.blend-6088a37dd764053a55700787d7845889.scn"
+
+[deps]
+
+source_file="res://Levels/LarsAssetsFuerJonas/WallsAndStuff.blend"
+dest_files=["res://.godot/imported/WallsAndStuff.blend-6088a37dd764053a55700787d7845889.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"materials": {
+"Carpet": {
+"use_external/enabled": true,
+"use_external/path": "res://Levels/LarsAssetsFuerJonas/export/Carpet.tres"
+},
+"Ceiling": {
+"use_external/enabled": true,
+"use_external/path": "res://Levels/LarsAssetsFuerJonas/export/Ceiling.tres"
+},
+"Glow": {
+"use_external/enabled": true,
+"use_external/path": "res://Levels/LarsAssetsFuerJonas/export/Glow.tres"
+},
+"Yellow Wallpaper": {
+"use_external/enabled": true,
+"use_external/path": "res://Levels/LarsAssetsFuerJonas/export/Yellow Wallpaper.tres"
+}
+},
+"meshes": {
+"WallsAndStuff_Cube_001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Levels/LarsAssetsFuerJonas/export/WallsAndStuff_Cube_001.res"
+},
+"WallsAndStuff_Cube_002": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Levels/LarsAssetsFuerJonas/export/WallsAndStuff_Cube_002.res"
+},
+"WallsAndStuff_Cube_003": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Levels/LarsAssetsFuerJonas/export/WallsAndStuff_Cube_003.res"
+},
+"WallsAndStuff_Cube_004": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Levels/LarsAssetsFuerJonas/export/WallsAndStuff_Cube_004.res"
+},
+"WallsAndStuff_Cube_005": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Levels/LarsAssetsFuerJonas/export/WallsAndStuff_Cube_005.res"
+},
+"WallsAndStuff_Cube_006": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Levels/LarsAssetsFuerJonas/export/WallsAndStuff_Cube_006.res"
+},
+"WallsAndStuff_Cube_007": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Levels/LarsAssetsFuerJonas/export/WallsAndStuff_Cube_007.res"
+},
+"WallsAndStuff_Cube_008": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Levels/LarsAssetsFuerJonas/export/WallsAndStuff_Cube_008.res"
+},
+"WallsAndStuff_Cube_009": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Levels/LarsAssetsFuerJonas/export/WallsAndStuff_Cube_009.res"
+},
+"WallsAndStuff_Cube_010": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Levels/LarsAssetsFuerJonas/export/WallsAndStuff_Cube_010.res"
+},
+"WallsAndStuff_Cube_011": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Levels/LarsAssetsFuerJonas/export/WallsAndStuff_Cube_011.res"
+},
+"WallsAndStuff_Cube_012": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Levels/LarsAssetsFuerJonas/export/WallsAndStuff_Cube_012.res"
+},
+"WallsAndStuff_Cube_013": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Levels/LarsAssetsFuerJonas/export/WallsAndStuff_Cube_013.res"
+},
+"WallsAndStuff_Cube_016": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Levels/LarsAssetsFuerJonas/export/WallsAndStuff_Cube_016.res"
+},
+"WallsAndStuff_Cube_017": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Levels/LarsAssetsFuerJonas/export/WallsAndStuff_Cube_017.res"
+},
+"WallsAndStuff_Cube_018": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Levels/LarsAssetsFuerJonas/export/WallsAndStuff_Cube_018.res"
+},
+"WallsAndStuff_Cube_019": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Levels/LarsAssetsFuerJonas/export/WallsAndStuff_Cube_019.res"
+},
+"WallsAndStuff_Cube_020": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Levels/LarsAssetsFuerJonas/export/WallsAndStuff_Cube_020.res"
+},
+"WallsAndStuff_Cube_021": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Levels/LarsAssetsFuerJonas/export/WallsAndStuff_Cube_021.res"
+},
+"WallsAndStuff_Cube_022": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Levels/LarsAssetsFuerJonas/export/WallsAndStuff_Cube_022.res"
+}
+}
+}
+blender/nodes/visible=0
+blender/nodes/active_collection_only=false
+blender/nodes/punctual_lights=true
+blender/nodes/cameras=true
+blender/nodes/custom_properties=true
+blender/nodes/modifiers=1
+blender/meshes/colors=false
+blender/meshes/uvs=true
+blender/meshes/normals=true
+blender/meshes/export_geometry_nodes_instances=false
+blender/meshes/tangents=true
+blender/meshes/skins=2
+blender/meshes/export_bones_deforming_mesh_only=false
+blender/materials/unpack_enabled=true
+blender/materials/export_materials=1
+blender/animation/limit_playback=true
+blender/animation/always_sample=true
+blender/animation/group_tracks=true

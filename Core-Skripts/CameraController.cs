@@ -22,7 +22,6 @@ public partial class CameraController : Node3D
     private float bob = 0;
 
 
-
     public override void _Ready()
     {
         // get player Character
@@ -60,8 +59,12 @@ public partial class CameraController : Node3D
             playerNeck.Rotation = rotation;
 
         }
-        Vector3 pos = Position;
     
+        else if (@event.IsActionPressed("esc"))
+        {
+            Input.MouseMode = Input.MouseMode == Input.MouseModeEnum.Captured ? Input.MouseModeEnum.Visible : Input.MouseModeEnum.Captured;
+        }
+        Vector3 pos = Position;
     }
 
     public void FlipCamera()

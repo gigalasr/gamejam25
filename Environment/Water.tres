@@ -1,9 +1,13 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://d06e0mh1l4x78"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://d06e0mh1l4x78"]
 
 [ext_resource type="Shader" uid="uid://crdxw36td4jgj" path="res://Environment/Water.gdshader" id="1_184bw"]
+[ext_resource type="Texture2D" uid="uid://dh21d8erudx3k" path="res://Environment/Water 0175bnormal.jpg" id="2_cahcq"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_184bw")
-shader_parameter/water_color = Color(0.0625, 0.1992, 0.3594, 1)
-shader_parameter/index_of_refraction = 1.333
+shader_parameter/normal_map_texture = ExtResource("2_cahcq")
+shader_parameter/water_color = Color(0.242927, 0.50268, 0.815726, 1)
+shader_parameter/index_of_refraction = 1.0
+shader_parameter/scale = 1.0
+shader_parameter/time_scale = 0.005

@@ -3,8 +3,10 @@ render_mode cull_disabled;
 
 uniform sampler2D screen_texture : hint_screen_texture, source_color, repeat_disable;
 uniform sampler2D normal_map_texture : hint_normal;
-uniform vec3 water_color : source_color = vec3(0.0625, 0.1992, 0.3594);
+uniform vec3 water_color : source_color = vec3(0.447, 0.662, 0.933);
 uniform float index_of_refraction = 1.333;
+uniform float scale = 1.0;
+uniform float time_scale = 0.005;
 
 // Returns 1.0 if we can see above the water, 0.0 otherwise
 float snells_window(vec3 normal, vec3 view, float ior) {
@@ -16,9 +18,9 @@ void fragment() {
 	ROUGHNESS = 0.0;
 
 	// Basic waves
-	float time = TIME * 0.05;
-	vec3 normal_sample_1 = texture(normal_map_texture, UV + vec2(-1, 1) * time).xyz * 2.0 - 1.0;
-	vec3 normal_sample_2 = texture(normal_map_texture, -UV + vec2(0, 1) * time).xyz * 2.0 - 1.0;
+	float time = TIME * time_scale;
+	vec3 normal_sample_1 = texture(normal_map_texture, UV*scale + vec2(-1, 1) * time).xyz * 2.0 - 1.0;
+	vec3 normal_sample_2 = texture(normal_map_texture, -UV*scale + vec2(0, 1) * time).xyz * 2.0 - 1.0;
 	vec3 normal_map = vec3(normal_sample_1.xy + normal_sample_2.xy, 0.0);
 
 	// Set NORMAL directly since we need to use it later

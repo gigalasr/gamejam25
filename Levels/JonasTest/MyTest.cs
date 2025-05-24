@@ -11,5 +11,5 @@ public partial class MyTest : Node3D
 	public override void _Input(InputEvent @event)
 	{
 		if (@event.IsActionPressed("gravity"))SignalBus.Instance.InvertGravity();
-    }
+	}
 }
