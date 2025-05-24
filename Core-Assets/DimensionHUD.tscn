@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dnsbtiswvhgw3"]
 
 [ext_resource type="Script" uid="uid://c64mnv4ddcrrw" path="res://Core-Skripts/DimensionHud.cs" id="1_kyx6o"]
-[ext_resource type="Texture2D" uid="uid://w1oo6i1qm3s7" path="res://icon.svg" id="2_4gmem"]
+[ext_resource type="Texture2D" uid="uid://wpmhkpiejna1" path="res://icon.svg" id="2_4gmem"]
 
 [node name="DimensionHud" type="Control"]
 layout_mode = 3

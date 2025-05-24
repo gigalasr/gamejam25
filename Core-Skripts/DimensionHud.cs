@@ -79,18 +79,22 @@ public partial class DimensionHud : Control
 	}
 
 
-	private void ShiftDimension(EDimension from){
+	private void ShiftDimension(EDimension from)
+	{
 		CurrentDimension = CurrentDimension.getNext();
 
-		if(GetConfig(CurrentDimension) == 0){
+		if (GetConfig(CurrentDimension) == 0)
+		{
 			ShiftDimension(from);
 			return;
 		}
 
-		if(GetConfig(CurrentDimension) < 0 != GetConfig(from) < 0){
+		if (GetConfig(CurrentDimension) < 0 != GetConfig(from) < 0)
+		{
 			SignalBus.Instance.InvertGravity();
 		}
 		SetDimIcon();
+		SignalBus.Instance.DimensionShift();
 	}
 
 	private int GetConfig(EDimension dim)
