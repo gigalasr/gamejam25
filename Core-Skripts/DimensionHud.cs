@@ -8,6 +8,10 @@ public partial class DimensionHud : Control
 	//1: activated
 	//-1: anti gravity
 	[ExportCategory("Dimensions")]
+
+	[Export]
+	public int maxShifts;
+
 	[Export]
 	public int blueDimension;
 
@@ -24,15 +28,19 @@ public partial class DimensionHud : Control
 
 
 	public EDimension CurrentDimension{get; private set;}
-	public int TimesDimChanged{get; private set;}
 
 	private TextureRect dimTexture;
+	private Label hint;
+	private Label leftShifts;
 
 	public override void _Ready()
 	{
-		TimesDimChanged = 0;
+		dimTexture = GetNode<TextureRect>("Dim");
+		hint = GetNode<Label>("VBoxContainer/Hint");
+		leftShifts = GetNode<Label>("VBoxContainer/ShiftsLeft");
+		leftShifts.Text = maxShifts.ToString();
 		SetStartDimension();
-		setDimIcon();
+		SetDimIcon();
 	}
 
 	private void SetStartDimension(){
@@ -52,22 +60,30 @@ public partial class DimensionHud : Control
 		}
 
 		CurrentDimension = EDimension.GREEN;
+
+		if(greenDimension == 0){
+			greenDimension = 1;
+		}
 	}
 
 	public override void _Input(InputEvent @event)
 	{
-		if (@event.IsActionPressed("DimensionShift")){
-			shiftDimension();
-			TimesDimChanged++;
+		if (@event.IsActionPressed("DimensionShift") && maxShifts > 0){
+			leftShifts.Text = (--maxShifts).ToString();
+			ShiftDimension();
 		}
 	}
 
-	private void shiftDimension(){
+	public void SetHint(string hint){
+		this.hint.Text = hint;
+	}
+
+	private void ShiftDimension(){
 		switch(CurrentDimension){
 			case EDimension.BLUE:
 				CurrentDimension = EDimension.YELLOW;
 				if(yellowDimension == 0){
-					shiftDimension();
+					ShiftDimension();
 					return;
 				}
 				if(yellowDimension < 0 != blueDimension < 0)
@@ -76,7 +92,7 @@ public partial class DimensionHud : Control
 			case EDimension.YELLOW:
 				CurrentDimension = EDimension.RED;
 				if(redDimension == 0){
-					shiftDimension();
+					ShiftDimension();
 					return;
 				}
 				if(redDimension < 0 != yellowDimension < 0)
@@ -85,7 +101,7 @@ public partial class DimensionHud : Control
 			case EDimension.RED:
 				CurrentDimension = EDimension.GREEN;
 				if(greenDimension == 0){
-					shiftDimension();
+					ShiftDimension();
 					return;
 				}
 				if(greenDimension < 0 != redDimension < 0)
@@ -94,18 +110,17 @@ public partial class DimensionHud : Control
 			case EDimension.GREEN:
 				CurrentDimension = EDimension.BLUE;
 				if(blueDimension == 0){
-					shiftDimension();
+					ShiftDimension();
 					return;
 				}
 				if(blueDimension < 0 != greenDimension < 0)
 					SignalBus.Instance.InvertGravity();
 			break;
 		}
-		setDimIcon();
+		SetDimIcon();
 	}
 
-	private void setDimIcon(){
-		dimTexture = GetNode<TextureRect>("Dim");
+	private void SetDimIcon(){
 
 		switch(CurrentDimension){
 			case EDimension.BLUE:

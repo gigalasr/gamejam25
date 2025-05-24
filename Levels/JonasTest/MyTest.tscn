@@ -152,6 +152,7 @@ offset_bottom = 646.0
 transform = Transform3D(-0.107902, 0.969584, 0.21969, 0.435363, 0.244749, -0.866347, -0.893765, 0.00216404, -0.44853, -2.07704, 14.2718, -10.5177)
 
 [node name="DimensionHud" parent="." instance=ExtResource("6_5w2m1")]
+maxShifts = 5
 blueDimension = 1
 yellowDimension = -1
 redDimension = 1
