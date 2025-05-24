@@ -36,7 +36,7 @@ public partial class PlayerController : CharacterBody3D
     public override void _PhysicsProcess(double delta)
     {
         Vector3 velocity = Velocity;
-        debugLabel.Text = "Floor: " + IsOnFloor() + ", Ceiling:" + IsOnCeiling();
+        //debugLabel.Text = "Floor: " + IsOnFloor() + ", Ceiling:" + IsOnCeiling();
 
         // Add the gravity.
         if (!OnFloor())
