@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://bq7e1n047mto0"]
+[gd_scene load_steps=22 format=3 uid="uid://bq7e1n047mto0"]
 
 [ext_resource type="Script" uid="uid://b21d1wfifl55f" path="res://Levels/JonasTest/MyTest.cs" id="1_vj7uu"]
 [ext_resource type="PackedScene" uid="uid://dkaudqh7fna2u" path="res://Core-Assets/Camera.tscn" id="2_mf8c5"]
+[ext_resource type="PackedScene" uid="uid://bnvjsxj675yf3" path="res://Levels/YojoMinimal/ColorWall.tscn" id="2_wou1b"]
 [ext_resource type="PackedScene" uid="uid://fyl8i28mgjl1" path="res://Core-Assets/player.tscn" id="3_wou1b"]
 [ext_resource type="PackedScene" uid="uid://ciwlkc0rihn8v" path="res://Core-Assets/Analytics.tscn" id="4_jvpd7"]
 [ext_resource type="Script" uid="uid://ox80y6g0usuf" path="res://Core-Skripts/ColouredRigidBody.cs" id="5_vj7uu"]
@@ -47,6 +48,12 @@ points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5
 [node name="MyTest" type="Node3D"]
 script = ExtResource("1_vj7uu")
 
+[node name="ColorWall" parent="." node_paths=PackedStringArray("hud") instance=ExtResource("2_wou1b")]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-09, -10, 0, 0.1, -4.37114e-07, 1.43982, 4.32635, -1.91942)
+skeleton = NodePath("../Floor/StaticBody3D/CollisionShape3D")
+hud = NodePath("../DimensionHud")
+dimension = 1
+
 [node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 mesh = SubResource("PlaneMesh_4hmin")
@@ -86,7 +93,7 @@ skeleton = NodePath("../Box1")
 shape = SubResource("ConvexPolygonShape3D_2vxwf")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.122084, 0.924248, -0.361747, -0.0756595, 0.372079, 0.925112, 0.989632, -0.0855722, 0.115353, -1.60381, 14.8642, 0)
+transform = Transform3D(0.122084, 0.924248, -0.361747, -0.0756595, 0.372079, 0.925112, 0.989632, -0.0855718, 0.115353, -1.60381, 14.8642, 6.35934)
 
 [node name="Character" type="Node3D" parent="."]
 
@@ -131,7 +138,7 @@ transform = Transform3D(-0.107902, 0.969584, 0.21969, 0.435363, 0.244749, -0.866
 [node name="DimensionHud" parent="." instance=ExtResource("6_jyrs4")]
 maxShifts = 1000
 blueDimension = 1
-yellowDimension = -1
+yellowDimension = 1
 
 [node name="RigidBody3D2" type="RigidBody3D" parent="." node_paths=PackedStringArray("hud")]
 transform = Transform3D(0.932324, 0.291443, 0.214087, 0, 0.592013, -0.805928, -0.361625, 0.751386, 0.551948, -2.66362, 3.88186, 0.367411)
