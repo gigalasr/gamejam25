@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxjivelbi6gpf"]
+
+[ext_resource type="PackedScene" uid="uid://b4t4l2hhn1bnc" path="res://Levels/Objects/Cube.blend" id="1_y0xby"]
+[ext_resource type="Material" uid="uid://dyqribxfxdgn0" path="res://Levels/Materials/checkerd-tile.tres" id="2_w0e7r"]
+
+[node name="Cube2" instance=ExtResource("1_y0xby")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_w0e7r")

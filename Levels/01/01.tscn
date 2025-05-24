@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cw6tbiybqcibv"]
+[gd_scene load_steps=19 format=3 uid="uid://cw6tbiybqcibv"]
 
 [ext_resource type="Environment" uid="uid://drp3oyo3t2fcf" path="res://Environment/DefaultEnvironemnt.tres" id="1_qhikt"]
 [ext_resource type="Script" uid="uid://cg0baidpf5gfb" path="res://Levels/01/Level01.cs" id="1_rwrmq"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://fyl8i28mgjl1" path="res://Core-Assets/player.tscn" id="9_8fmyj"]
 [ext_resource type="PackedScene" uid="uid://b5g2hprsrrmio" path="res://Levels/Objects/Cube.tscn" id="10_8fmyj"]
 [ext_resource type="PackedScene" uid="uid://dkaudqh7fna2u" path="res://Core-Assets/Camera.tscn" id="10_rwrmq"]
+[ext_resource type="PackedScene" path="res://Core-Assets/DimensionHUD.tscn" id="12_luwbn"]
+[ext_resource type="PackedScene" uid="uid://b0uw2dlg45vbi" path="res://Levels/Objects/PushableCube.tscn" id="13_jx11f"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_f8xtr"]
 dof_blur_far_distance = 55.84
@@ -22,7 +24,7 @@ size = Vector3(0.502686, 0.848083, 0.612061)
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8fmyj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rwrmq"]
-size = Vector3(4.78198, 1, 146)
+size = Vector3(4.78198, 1, 137)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_luwbn"]
 size = Vector3(21, 2.5, 19)
@@ -37,9 +39,9 @@ camera_attributes = SubResource("CameraAttributesPractical_f8xtr")
 [node name="geometry" parent="." instance=ExtResource("2_qhikt")]
 
 [node name="VoxelGI" type="VoxelGI" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6439, 21.6397, -91.7763)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6439, 19.1306, -54.7088)
 subdiv = 3
-size = Vector3(73.9103, 26.9818, 132.865)
+size = Vector3(73.9103, 32, 207)
 data = ExtResource("3_f8xtr")
 
 [node name="electric_stove_4k" parent="." instance=ExtResource("4_30twp")]
@@ -90,7 +92,7 @@ light_size = 1.0
 omni_range = 24.0
 
 [node name="Cube2" parent="." instance=ExtResource("10_8fmyj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.7334, 10.694, -163.96)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.7334, 10.694, -162.96)
 
 [node name="Cube" parent="." instance=ExtResource("10_8fmyj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5167, 11.347, -43.4798)
@@ -99,7 +101,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5167, 11.347, -43.4798)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.961, -21.3378, -206.444)
 
 [node name="Player" parent="." instance=ExtResource("9_8fmyj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0873, -18.7885, -196.542)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.0873, 14.2115, -58.542)
 canDoubleJump = true
 
 [node name="Area3D" type="Area3D" parent="."]
@@ -108,7 +110,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.159302, 0, -25.1674)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.159302, 0, -29.6674)
 shape = SubResource("BoxShape3D_rwrmq")
 debug_color = Color(0.979866, 0, 0.384489, 0.42)
 
@@ -116,6 +118,15 @@ debug_color = Color(0.979866, 0, 0.384489, 0.42)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, -107)
 shape = SubResource("BoxShape3D_luwbn")
 debug_color = Color(0.997418, 0, 0.166377, 0.42)
+
+[node name="DimensionHud" parent="." instance=ExtResource("12_luwbn")]
+maxShifts = 16
+blueDimension = 1
+yellowDimension = -1
+
+[node name="Cube3" parent="." instance=ExtResource("13_jx11f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, -17, -261)
+mass = 0.1
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]
