@@ -70,7 +70,7 @@ public partial class DimensionHud : Control
 	{
 		if (@event.IsActionPressed("DimensionShift") && maxShifts > 0){
 			leftShifts.Text = (--maxShifts).ToString();
-			ShiftDimension();
+			ShiftDimension(CurrentDimension);
 		}
 	}
 
@@ -78,46 +78,30 @@ public partial class DimensionHud : Control
 		this.hint.Text = hint;
 	}
 
-	private void ShiftDimension(){
-		switch(CurrentDimension){
-			case EDimension.BLUE:
-				CurrentDimension = EDimension.YELLOW;
-				if(yellowDimension == 0){
-					ShiftDimension();
-					return;
-				}
-				if(yellowDimension < 0 != blueDimension < 0)
-					SignalBus.Instance.InvertGravity();
-			break;
-			case EDimension.YELLOW:
-				CurrentDimension = EDimension.RED;
-				if(redDimension == 0){
-					ShiftDimension();
-					return;
-				}
-				if(redDimension < 0 != yellowDimension < 0)
-					SignalBus.Instance.InvertGravity();
-			break;
-			case EDimension.RED:
-				CurrentDimension = EDimension.GREEN;
-				if(greenDimension == 0){
-					ShiftDimension();
-					return;
-				}
-				if(greenDimension < 0 != redDimension < 0)
-					SignalBus.Instance.InvertGravity();
-			break;
-			case EDimension.GREEN:
-				CurrentDimension = EDimension.BLUE;
-				if(blueDimension == 0){
-					ShiftDimension();
-					return;
-				}
-				if(blueDimension < 0 != greenDimension < 0)
-					SignalBus.Instance.InvertGravity();
-			break;
+
+	private void ShiftDimension(EDimension from){
+		CurrentDimension = CurrentDimension.getNext();
+
+		if(GetConfig(CurrentDimension) == 0){
+			ShiftDimension(from);
+			return;
+		}
+
+		if(GetConfig(CurrentDimension) < 0 != GetConfig(from) < 0){
+			SignalBus.Instance.InvertGravity();
 		}
 		SetDimIcon();
+	}
+
+	private int GetConfig(EDimension dim)
+	{
+		switch(dim){
+			case EDimension.BLUE: return blueDimension;
+			case EDimension.YELLOW: return yellowDimension;
+			case EDimension.RED: return redDimension;
+			case EDimension.GREEN: return greenDimension;
+		}
+		return 0;
 	}
 
 	private void SetDimIcon(){

@@ -155,5 +155,3 @@ transform = Transform3D(-0.107902, 0.969584, 0.21969, 0.435363, 0.244749, -0.866
 maxShifts = 5
 blueDimension = 1
 yellowDimension = -1
-redDimension = 1
-greenDimension = -1
