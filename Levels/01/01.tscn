@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cw6tbiybqcibv"]
+[gd_scene load_steps=32 format=3 uid="uid://cw6tbiybqcibv"]
 
 [ext_resource type="Environment" uid="uid://drp3oyo3t2fcf" path="res://Environment/DefaultEnvironemnt.tres" id="1_qhikt"]
 [ext_resource type="Script" uid="uid://cg0baidpf5gfb" path="res://Levels/01/Level01.cs" id="1_rwrmq"]
@@ -19,6 +19,9 @@
 [ext_resource type="PackedScene" uid="uid://def2373363ffv" path="res://Levels/Objects/drill/Drill_01_4k.blend" id="17_4r5pd"]
 [ext_resource type="PackedScene" uid="uid://d1bdacvruodyu" path="res://Levels/Objects/industrial_railing_1_long.tscn" id="18_icacn"]
 [ext_resource type="PackedScene" uid="uid://cpb0urpwbflk6" path="res://Levels/Objects/railing_corner.tscn" id="19_hbmcq"]
+[ext_resource type="PackedScene" uid="uid://8324is441s4y" path="res://Levels/Objects/wetfloor/WetFloorSign_01_4k.blend" id="20_0k8nj"]
+[ext_resource type="PackedScene" uid="uid://c8raworgeywh3" path="res://Levels/Objects/sofa/sofa_02_4k.blend" id="21_vgyua"]
+[ext_resource type="PackedScene" uid="uid://q4iu3p0rfywb" path="res://Levels/Objects/elephant/carved_wooden_elephant_4k.blend" id="22_gko2q"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_f8xtr"]
 dof_blur_far_distance = 55.84
@@ -275,6 +278,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, -14, -284)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, -4.5, 4.5)
 shape = SubResource("BoxShape3D_hbmcq")
+
+[node name="WetFloorSign_01_4k" parent="Node3D" instance=ExtResource("20_0k8nj")]
+transform = Transform3D(0, 0, 5, 0, 5, 0, -5, 0, 0, 13.2, 12.8, -81.6)
+
+[node name="sofa_02_4k" parent="." instance=ExtResource("21_vgyua")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 13, 12.7, -65)
+
+[node name="carved_wooden_elephant_4k" parent="." instance=ExtResource("22_gko2q")]
+transform = Transform3D(-15, 0, -1.43051e-06, 0, 15, 0, 1.43051e-06, 0, -15, 12.8, 13.6, -50.2)
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="carved_wooden_elephant_4k"]
+transform = Transform3D(-6.88748e-09, 0, -0.133333, 0, 0.133333, 0, 0.133333, 0, -6.88748e-09, -0.0266667, 0.24, -0.0133333)
+amount = 64
+lifetime = 5.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_xtjpt")
+draw_pass_1 = SubResource("PointMesh_icacn")
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]
