@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpb0urpwbflk6"]
+
+[ext_resource type="PackedScene" uid="uid://csewns8npmnsn" path="res://Levels/Objects/railing/fbx_format/industrial_railing1_corner_soft90.FBX" id="1_g1jr7"]
+[ext_resource type="Material" uid="uid://b4oe5o04fqm2b" path="res://Levels/Objects/metal.tres" id="2_uoafo"]
+
+[node name="industrial_railing1_corner_soft90" instance=ExtResource("1_g1jr7")]
+
+[node name="Cylinder03" parent="Fbx_Root" index="0"]
+surface_material_override/0 = ExtResource("2_uoafo")

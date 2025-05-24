@@ -16,7 +16,6 @@ public partial class CameraController : Node3D
     private PlayerController player;
 
 
-
     public override void _Ready()
     {
         // get player Character
@@ -46,6 +45,10 @@ public partial class CameraController : Node3D
             rotation.X = Mathf.Clamp(rotation.X, Mathf.DegToRad(clampDown), Mathf.DegToRad(clampUp));
             playerNeck.Rotation = rotation;
 
+        }
+        else if (@event.IsActionPressed("esc"))
+        {
+            Input.MouseMode = Input.MouseMode == Input.MouseModeEnum.Captured ? Input.MouseModeEnum.Visible : Input.MouseModeEnum.Captured;
         }
     }
 
