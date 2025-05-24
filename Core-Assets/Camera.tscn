@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://jyqdcet4umog" path="res://Core-Skripts/CameraController.cs" id="1_tsu0j"]
 
-[node name="Camera Controller" type="Node3D"]
+[node name="Camera Controller" type="Node3D" groups=["Camera"]]
 script = ExtResource("1_tsu0j")
 
 [node name="Camera3D" type="Camera3D" parent="." groups=["Camera"]]

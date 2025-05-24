@@ -24,11 +24,13 @@ public partial class PlayerController : CharacterBody3D
     private bool ignoreGravityInvert = false;
 
     private Label debugLabel;
+    private CameraController camera;
 
     public override void _Ready()
     {
         SignalBus.Instance.OnGravityInvert += InvertGravity;
         debugLabel = GetTree().GetFirstNodeInGroup("DebugPrint") as Label;
+        camera = GetTree().GetFirstNodeInGroup("Camera") as CameraController;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -86,6 +88,7 @@ public partial class PlayerController : CharacterBody3D
         {
             playerGravityModifier = gravityModifier;
             RotateObjectLocal(Vector3.Right, Mathf.Pi);
+            camera.FlipCamera();
         }
             
         GD.Print(playerGravityModifier);
@@ -111,7 +114,11 @@ public partial class PlayerController : CharacterBody3D
     private void RecogniseGravityInvert()
     {
         ignoreGravityInvert = false;
-        if (playerGravityModifier != gravityModifier) RotateObjectLocal(Vector3.Right, Mathf.Pi);
+        if (playerGravityModifier != gravityModifier)
+        {
+            RotateObjectLocal(Vector3.Right, Mathf.Pi);
+            camera.FlipCamera();
+        }
         playerGravityModifier = gravityModifier;
     }
 }

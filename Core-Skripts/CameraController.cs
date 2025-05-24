@@ -39,12 +39,20 @@ public partial class CameraController : Node3D
             float deltaX = mouseMotion.Relative.X * mouseSensitivity;
             float deltaY = mouseMotion.Relative.Y * mouseSensitivity;
 
-            
-
             player.RotateY(Mathf.DegToRad(-deltaX * player.playerGravityModifier));
-            playerNeck.RotateX(Mathf.DegToRad(-deltaY));
+            //playerNeck.RotateX(Mathf.DegToRad(-deltaY));
+            Vector3 rotation = playerNeck.Rotation;
+            rotation.X -= Mathf.DegToRad(deltaY);
+            rotation.X = Mathf.Clamp(rotation.X, Mathf.DegToRad(clampDown), Mathf.DegToRad(clampUp));
+            playerNeck.Rotation = rotation;
 
-        
         }
+    }
+
+    public void FlipCamera()
+    {
+        Vector3 rotation = playerNeck.Rotation;
+        rotation.X = Mathf.Clamp(-rotation.X, Mathf.DegToRad(clampDown), Mathf.DegToRad(clampUp));
+        playerNeck.Rotation = rotation;
     }
 }
