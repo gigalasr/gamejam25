@@ -1,113 +1,26 @@
-[gd_scene load_steps=11 format=3 uid="uid://cw6tbiybqcibv"]
+[gd_scene load_steps=14 format=3 uid="uid://cw6tbiybqcibv"]
 
 [ext_resource type="Environment" uid="uid://drp3oyo3t2fcf" path="res://Environment/DefaultEnvironemnt.tres" id="1_qhikt"]
 [ext_resource type="PackedScene" uid="uid://cs23d1wgooeti" path="res://Levels/01/geometry.tscn" id="2_qhikt"]
 [ext_resource type="VoxelGIData" uid="uid://cn4kyshsd8r1h" path="res://Levels/01/01.VoxelGI_data.res" id="3_f8xtr"]
 [ext_resource type="PackedScene" uid="uid://bx6s7pvs2m0p1" path="res://Levels/01/electric_stove_4k.blend" id="4_30twp"]
-[ext_resource type="PackedScene" uid="uid://b4t4l2hhn1bnc" path="res://Levels/Objects/Cube.blend" id="5_sljw0"]
 [ext_resource type="VoxelGIData" uid="uid://b1gchjgv7ijmp" path="res://Levels/01/01.VoxelGI2_data.res" id="6_v1n3y"]
 [ext_resource type="PackedScene" uid="uid://o0sk540j12sf" path="res://Levels/Objects/table/round_wooden_table_02_4k.blend" id="7_vldvu"]
 [ext_resource type="PackedScene" uid="uid://bdcclvopdavx4" path="res://Levels/Objects/television/Television_01_4k.blend" id="8_647ye"]
-
-[sub_resource type="GDScript" id="GDScript_f8xtr"]
-script/source = "@tool
-extends CanvasLayer
-
-@export var effects : Array[FXBase] = []:
-	set(value):
-		effects = value
-		_update_effects()
-
-@export var always_update : bool = false
-
-var color_rects : Array[ColorRect] = []
-
-func _ready() -> void:
-	_update_effects()
-
-func _process(_delta: float) -> void:
-	if !Engine.is_editor_hint():
-		if always_update:
-			_update_effects()
-
-func _update_effects() -> void:
-	for child in get_children():
-		child.queue_free()
-	color_rects.clear()
-	
-	for i in range(effects.size()):
-		var fx = effects[i]
-		if fx == null or not fx.enabled:
-			continue
-		
-		var rect := ColorRect.new()
-		rect.name = \"FX_%d\" % i
-		rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		var canvas_layer := CanvasLayer.new()
-		add_child(canvas_layer)
-		canvas_layer.add_child(rect)
-		color_rects.append(rect)
-		
-		var mat := ShaderMaterial.new()
-		var shader := Shader.new()
-		shader.code = fx._get_shader_code()
-		mat.shader = shader
-		
-		for key in fx.properties.keys():
-			mat.set_shader_parameter(key, fx.properties[key])
-		
-		#rect.visible = fx.enabled
-		rect.material = mat
-		
-		if fx.is_connected(\"changed\", Callable(self, \"_on_fx_changed\")):
-			fx.disconnect(\"changed\", Callable(self, \"_on_fx_changed\"))
-		fx.connect(\"changed\", Callable(self, \"_on_fx_changed\").bind(rect, fx), CONNECT_DEFERRED)
-
-func _on_fx_changed(rect: ColorRect, fx: FXBase) -> void:
-	if not is_instance_valid(rect):
-		return
-	
-	rect.visible = fx.enabled
-	
-	fx._update_shader()
-	var mat := rect.material
-	if mat is ShaderMaterial:
-		for key in fx.properties.keys():
-			mat.set_shader_parameter(key, fx.properties[key])
-
-func get_fx(type: StringName) -> FXBase:
-	for fx in effects:
-		if fx == null:
-			continue
-		var script := fx.get_script() as Script
-		if (script.resource_path.get_file() == type + \".gd\") or (script.get_class() == type):
-			return fx
-	return null
-
-func set_fx_property(type:StringName, property: StringName, value) -> void:
-	var fx := get_fx(type)
-	if fx == null:
-		push_warning(\"Effect %s not found.\" % type)
-		return
-	
-	fx.set(property, value)
-	
-func toggle_fx(type: StringName, enable: bool) -> void:
-	var fx := get_fx(type)
-	if fx != null:
-		fx.enabled = enable
-"
+[ext_resource type="PackedScene" uid="uid://fyl8i28mgjl1" path="res://Core-Assets/player.tscn" id="9_8fmyj"]
+[ext_resource type="PackedScene" uid="uid://b5g2hprsrrmio" path="res://Levels/Objects/Cube.tscn" id="10_8fmyj"]
+[ext_resource type="PackedScene" uid="uid://dkaudqh7fna2u" path="res://Core-Assets/Camera.tscn" id="10_rwrmq"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_f8xtr"]
 dof_blur_far_distance = 55.84
 dof_blur_near_distance = 8.38
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_8fmyj"]
+size = Vector3(0.502686, 0.848083, 0.612061)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.21043, 0)
-script = SubResource("GDScript_f8xtr")
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8fmyj"]
+
+[node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_qhikt")
@@ -116,25 +29,51 @@ camera_attributes = SubResource("CameraAttributesPractical_f8xtr")
 [node name="geometry" parent="." instance=ExtResource("2_qhikt")]
 
 [node name="VoxelGI" type="VoxelGI" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5904, 18.2929, -77.5982)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6439, 21.6397, -91.7763)
 subdiv = 3
-size = Vector3(157.261, 53.9667, 298.673)
+size = Vector3(73.9103, 26.9818, 132.865)
 data = ExtResource("3_f8xtr")
 
 [node name="electric_stove_4k" parent="." instance=ExtResource("4_30twp")]
-transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, 43.8593, -1.22028, -32.8817)
+transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, 34.8211, 9.10186, -64.9671)
 
-[node name="Cube2" parent="." instance=ExtResource("5_sljw0")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 21.1031, 2.08499, 10.5583)
+[node name="StaticBody3D" type="StaticBody3D" parent="electric_stove_4k"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="electric_stove_4k/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00280762, 0.431305, 0.00598145)
+shape = SubResource("BoxShape3D_8fmyj")
 
 [node name="VoxelGI2" type="VoxelGI" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9356, -25.5485, -304.462)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4729, -3.34908, -201.899)
 subdiv = 3
-size = Vector3(159.365, 94.7699, 172.404)
+size = Vector3(91.95, 63.3408, 91.2641)
 data = ExtResource("6_v1n3y")
 
 [node name="round_wooden_table_02_4k" parent="." instance=ExtResource("7_vldvu")]
-transform = Transform3D(4.00768, 0, 2.98973, 0, 5, 0, -2.98973, 0, 4.00768, -9.49815, -69.9494, -281.757)
+transform = Transform3D(4.00768, 0, 2.98973, 0, 5, 0, -2.98973, 0, 4.00768, 9.96408, -25.1696, -190.982)
 
 [node name="Television_01_4k" parent="round_wooden_table_02_4k" instance=ExtResource("8_647ye")]
 transform = Transform3D(-0.245409, 0, 0.96942, 0, 1, 0, -0.96942, 0, -0.245409, 0.038496, 0.733167, -0.0114822)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="round_wooden_table_02_4k"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="round_wooden_table_02_4k/StaticBody3D"]
+transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, 0, 0.220215, 0)
+shape = SubResource("CylinderShape3D_8fmyj")
+
+[node name="Player" parent="." instance=ExtResource("9_8fmyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3012, 11.5099, -48.4952)
+
+[node name="Camera Controller" parent="." instance=ExtResource("10_rwrmq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0717, 12.8419, -50.3619)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.7831, 9.18215, -163.627)
+light_color = Color(0.464628, 0.565026, 0.643072, 1)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.1757, 9.43078, -163.257)
+light_color = Color(0.672707, 0.521067, 0.291693, 1)
+
+[node name="Cube" parent="." instance=ExtResource("10_8fmyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5167, 11.347, -43.4798)

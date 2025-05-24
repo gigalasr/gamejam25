@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ciwlkc0rihn8v"]
+
+[ext_resource type="Script" uid="uid://cwcriynwi5wa2" path="res://Core-Skripts/Analytics.cs" id="1_a8mi6"]
+
+[node name="FpsCounter" type="CanvasLayer"]
+script = ExtResource("1_a8mi6")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

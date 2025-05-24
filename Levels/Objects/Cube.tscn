@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5g2hprsrrmio"]
+
+[ext_resource type="PackedScene" uid="uid://b4t4l2hhn1bnc" path="res://Levels/Objects/Cube.blend" id="1_ucmwf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nlpgw"]
+size = Vector3(4, 4, 4)
+
+[node name="Cube" type="RigidBody3D"]
+
+[node name="Cube2" parent="." instance=ExtResource("1_ucmwf")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_nlpgw")
