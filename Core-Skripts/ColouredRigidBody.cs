@@ -4,7 +4,7 @@ using System;
 public partial class ColouredRigidBody : GravityInverter
 {
 
-	[ExportCategory("Dimensions")]
+    [ExportCategory("Dimensions")]
     [Export]
     public DimensionHud hud;
 
@@ -17,6 +17,8 @@ public partial class ColouredRigidBody : GravityInverter
 
     public override void _Ready()
     {
+        base._Ready();
+
         initialMass = Mass;
         SignalBus.Instance.OnDimensionShift += DimensionShift;
         DimensionShift();
@@ -44,7 +46,7 @@ public partial class ColouredRigidBody : GravityInverter
             MeshInstance3D mesh = child as MeshInstance3D;
             if (mesh != null)
             {
-                mesh.MaterialOverlay =  material;
+                mesh.MaterialOverlay = material;
             }
         }
     }
