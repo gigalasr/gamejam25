@@ -10,6 +10,9 @@ public partial class PlayerController : CharacterBody3D
     public float runningSpeed = 7.5f;
     [Export]
     public float JumpVelocity = 4.5f;
+    [ExportCategory("Interaction")]
+    [Export]
+    public float pushForce = 50.0f;
     [ExportCategory("Actions")]
     [Export]
     public bool canJump = true;
@@ -55,7 +58,7 @@ public partial class PlayerController : CharacterBody3D
         {
             if (OnFloor())
             {
-                velocity.Y =  playerGravityModifier * JumpVelocity;
+                velocity.Y = playerGravityModifier * JumpVelocity;
             }
             else if (canDoubleJump && !hasDoubleJumped)
             {
@@ -81,6 +84,17 @@ public partial class PlayerController : CharacterBody3D
 
         Velocity = velocity;
         MoveAndSlide();
+
+        /// handle push collisions
+        for (int i = 0; i < GetSlideCollisionCount(); ++i)
+        {
+            var collision = GetSlideCollision(i);
+            if (collision.GetCollider() is RigidBody3D)
+            {
+                var collider = (RigidBody3D)collision.GetCollider();
+                collider.ApplyCentralImpulse(-collision.GetNormal() * pushForce);
+            }
+        }
     }
 
     private void InvertGravity()
