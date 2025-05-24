@@ -38,7 +38,7 @@ public partial class PlayerController : CharacterBody3D
     public override void _PhysicsProcess(double delta)
     {
         Vector3 velocity = Velocity;
-       // debugLabel.Text = "Floor: " + IsOnFloor() + ", Ceiling:" + IsOnCeiling();
+        //debugLabel.Text = "Floor: " + IsOnFloor() + ", Ceiling:" + IsOnCeiling();
 
         // Add the gravity.
         if (!OnFloor())
@@ -90,6 +90,7 @@ public partial class PlayerController : CharacterBody3D
         {
             playerGravityModifier = gravityModifier;
             RotateObjectLocal(Vector3.Right, Mathf.Pi);
+            RotateObjectLocal(Vector3.Up, Mathf.Pi);
             camera.FlipCamera();
         }
             
@@ -119,6 +120,7 @@ public partial class PlayerController : CharacterBody3D
         if (playerGravityModifier != gravityModifier)
         {
             RotateObjectLocal(Vector3.Right, Mathf.Pi);
+            RotateObjectLocal(Vector3.Up, Mathf.Pi);
             camera.FlipCamera();
         }
         playerGravityModifier = gravityModifier;
