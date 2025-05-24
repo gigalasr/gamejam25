@@ -29,14 +29,16 @@ public partial class PlayerController : CharacterBody3D
     public override void _Ready()
     {
         SignalBus.Instance.OnGravityInvert += InvertGravity;
-        debugLabel = GetTree().GetFirstNodeInGroup("DebugPrint") as Label;
+        SignalBus.Instance.OnPlayerIgnoreGravityInvert += IgnoreGravityInvert;
+        SignalBus.Instance.OnPlayerRecogniseGravityInvert += RecogniseGravityInvert;
+        //debugLabel = GetTree().GetFirstNodeInGroup("DebugPrint") as Label;
         camera = GetTree().GetFirstNodeInGroup("Camera") as CameraController;
     }
 
     public override void _PhysicsProcess(double delta)
     {
         Vector3 velocity = Velocity;
-        debugLabel.Text = "Floor: " + IsOnFloor() + ", Ceiling:" + IsOnCeiling();
+       // debugLabel.Text = "Floor: " + IsOnFloor() + ", Ceiling:" + IsOnCeiling();
 
         // Add the gravity.
         if (!OnFloor())

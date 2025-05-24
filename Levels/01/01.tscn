@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://cw6tbiybqcibv"]
+[gd_scene load_steps=17 format=3 uid="uid://cw6tbiybqcibv"]
 
 [ext_resource type="Environment" uid="uid://drp3oyo3t2fcf" path="res://Environment/DefaultEnvironemnt.tres" id="1_qhikt"]
+[ext_resource type="Script" uid="uid://cg0baidpf5gfb" path="res://Levels/01/Level01.cs" id="1_rwrmq"]
 [ext_resource type="PackedScene" uid="uid://cs23d1wgooeti" path="res://Levels/01/geometry.tscn" id="2_qhikt"]
 [ext_resource type="VoxelGIData" uid="uid://cn4kyshsd8r1h" path="res://Levels/01/01.VoxelGI_data.res" id="3_f8xtr"]
 [ext_resource type="PackedScene" uid="uid://bx6s7pvs2m0p1" path="res://Levels/01/electric_stove_4k.blend" id="4_30twp"]
@@ -20,7 +21,14 @@ size = Vector3(0.502686, 0.848083, 0.612061)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8fmyj"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_rwrmq"]
+size = Vector3(4.78198, 1, 146)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_luwbn"]
+size = Vector3(21, 2.5, 19)
+
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_rwrmq")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_qhikt")
@@ -44,13 +52,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00280762, 0.431305, 0.00598
 shape = SubResource("BoxShape3D_8fmyj")
 
 [node name="VoxelGI2" type="VoxelGI" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4729, -3.34908, -201.899)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4729, -3.34908, -252.767)
 subdiv = 3
-size = Vector3(91.95, 63.3408, 91.2641)
+size = Vector3(91.95, 63.3408, 193)
 data = ExtResource("6_v1n3y")
 
 [node name="round_wooden_table_02_4k" parent="." instance=ExtResource("7_vldvu")]
-transform = Transform3D(4.00768, 0, 2.98973, 0, 5, 0, -2.98973, 0, 4.00768, 9.96408, -25.1696, -190.982)
+transform = Transform3D(2.40461, 0, 1.79384, 0, 3, 0, -1.79384, 0, 2.40461, 9.96408, -25.1696, -190.982)
 
 [node name="Television_01_4k" parent="round_wooden_table_02_4k" instance=ExtResource("8_647ye")]
 transform = Transform3D(-0.245409, 0, 0.96942, 0, 1, 0, -0.96942, 0, -0.245409, 0.038496, 0.733167, -0.0114822)
@@ -61,12 +69,6 @@ transform = Transform3D(-0.245409, 0, 0.96942, 0, 1, 0, -0.96942, 0, -0.245409, 
 transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, 0, 0.220215, 0)
 shape = SubResource("CylinderShape3D_8fmyj")
 
-[node name="Player" parent="." instance=ExtResource("9_8fmyj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3012, 11.5099, -48.4952)
-
-[node name="Camera Controller" parent="." instance=ExtResource("10_rwrmq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0717, 12.8419, -50.3619)
-
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.7831, 9.18215, -163.627)
 light_color = Color(0.464628, 0.565026, 0.643072, 1)
@@ -75,5 +77,47 @@ light_color = Color(0.464628, 0.565026, 0.643072, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.1757, 9.43078, -163.257)
 light_color = Color(0.672707, 0.521067, 0.291693, 1)
 
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2666, 0.694, -262.96)
+light_color = Color(0.464628, 0.565026, 0.643072, 1)
+light_size = 1.0
+omni_range = 24.0
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.7334, 0.694, -269.96)
+light_color = Color(0.672707, 0.521067, 0.291693, 1)
+light_size = 1.0
+omni_range = 24.0
+
+[node name="Cube2" parent="." instance=ExtResource("10_8fmyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.7334, 10.694, -163.96)
+
 [node name="Cube" parent="." instance=ExtResource("10_8fmyj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5167, 11.347, -43.4798)
+
+[node name="Camera Controller" parent="." instance=ExtResource("10_rwrmq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.961, -21.3378, -206.444)
+
+[node name="Player" parent="." instance=ExtResource("9_8fmyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0873, -18.7885, -196.542)
+canDoubleJump = true
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.7339, 9.40884, -62.4345)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.159302, 0, -25.1674)
+shape = SubResource("BoxShape3D_rwrmq")
+debug_color = Color(0.979866, 0, 0.384489, 0.42)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, -107)
+shape = SubResource("BoxShape3D_luwbn")
+debug_color = Color(0.997418, 0, 0.166377, 0.42)
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

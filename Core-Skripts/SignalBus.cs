@@ -28,6 +28,7 @@ public partial class SignalBus : Node
     public event Action OnPlayerIgnoreGravityInvert;
     public void PlayerIgnoreGravityInvert()
     {
+        GD.Print("Invert ignore huh???");
         OnPlayerIgnoreGravityInvert?.Invoke();
     }
 
