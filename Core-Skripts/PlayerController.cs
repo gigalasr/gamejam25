@@ -10,6 +10,9 @@ public partial class PlayerController : CharacterBody3D
     public float runningSpeed = 7.5f;
     [Export]
     public float JumpVelocity = 4.5f;
+    [ExportCategory("Interaction")]
+    [Export]
+    public float pushForce = 50.0f;
     [ExportCategory("Actions")]
     [Export]
     public bool canJump = true;
@@ -29,14 +32,16 @@ public partial class PlayerController : CharacterBody3D
     public override void _Ready()
     {
         SignalBus.Instance.OnGravityInvert += InvertGravity;
-        debugLabel = GetTree().GetFirstNodeInGroup("DebugPrint") as Label;
+        SignalBus.Instance.OnPlayerIgnoreGravityInvert += IgnoreGravityInvert;
+        SignalBus.Instance.OnPlayerRecogniseGravityInvert += RecogniseGravityInvert;
+        //debugLabel = GetTree().GetFirstNodeInGroup("DebugPrint") as Label;
         camera = GetTree().GetFirstNodeInGroup("Camera") as CameraController;
     }
 
     public override void _PhysicsProcess(double delta)
     {
         Vector3 velocity = Velocity;
-        debugLabel.Text = "Floor: " + IsOnFloor() + ", Ceiling:" + IsOnCeiling();
+        //debugLabel.Text = "Floor: " + IsOnFloor() + ", Ceiling:" + IsOnCeiling();
 
         // Add the gravity.
         if (!OnFloor())
@@ -53,7 +58,7 @@ public partial class PlayerController : CharacterBody3D
         {
             if (OnFloor())
             {
-                velocity.Y =  playerGravityModifier * JumpVelocity;
+                velocity.Y = playerGravityModifier * JumpVelocity;
             }
             else if (canDoubleJump && !hasDoubleJumped)
             {
@@ -79,6 +84,17 @@ public partial class PlayerController : CharacterBody3D
 
         Velocity = velocity;
         MoveAndSlide();
+
+        /// handle push collisions
+        for (int i = 0; i < GetSlideCollisionCount(); ++i)
+        {
+            var collision = GetSlideCollision(i);
+            if (collision.GetCollider() is RigidBody3D)
+            {
+                var collider = (RigidBody3D)collision.GetCollider();
+                collider.ApplyCentralImpulse(-collision.GetNormal() * pushForce);
+            }
+        }
     }
 
     private void InvertGravity()
@@ -88,6 +104,7 @@ public partial class PlayerController : CharacterBody3D
         {
             playerGravityModifier = gravityModifier;
             RotateObjectLocal(Vector3.Right, Mathf.Pi);
+            RotateObjectLocal(Vector3.Up, Mathf.Pi);
             camera.FlipCamera();
         }
             
@@ -117,6 +134,7 @@ public partial class PlayerController : CharacterBody3D
         if (playerGravityModifier != gravityModifier)
         {
             RotateObjectLocal(Vector3.Right, Mathf.Pi);
+            RotateObjectLocal(Vector3.Up, Mathf.Pi);
             camera.FlipCamera();
         }
         playerGravityModifier = gravityModifier;

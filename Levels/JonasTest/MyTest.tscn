@@ -75,7 +75,7 @@ transform = Transform3D(0.122084, 0.924248, -0.361747, -0.0756595, 0.372079, 0.9
 [node name="Character" type="Node3D" parent="."]
 
 [node name="Camera" parent="Character" instance=ExtResource("2_4hmin")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6126, 0, -4.99756)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.833, 0.42524, -5.10487)
 clampUp = 75.0
 clampDown = -50.0
 
