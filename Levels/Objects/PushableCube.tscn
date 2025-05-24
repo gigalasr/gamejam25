@@ -7,6 +7,7 @@
 size = Vector3(4, 4, 4)
 
 [node name="Cube" type="RigidBody3D"]
+mass = 50.0
 script = ExtResource("1_oj1w1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
