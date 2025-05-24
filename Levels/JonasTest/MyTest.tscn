@@ -77,15 +77,19 @@ transform = Transform3D(0.122084, 0.924248, -0.361747, -0.0756595, 0.372079, 0.9
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.833, 0.42524, -5.10487)
 clampUp = 75.0
 clampDown = -50.0
+bobbingAmplitude = 0.05
+bobbingFrquency = 0.5
 
 [node name="Player" parent="Character" instance=ExtResource("1_4qhqw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31346, 2.47312, 4.70033)
 Speed = 5.0
+airControl = false
 
 [node name="FpsCounter" parent="." instance=ExtResource("3_potjm")]
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 transform = Transform3D(0.932324, 0.291443, 0.214087, 0, 0.592013, -0.805928, -0.361625, 0.751386, 0.551948, 0, 3.88186, 0.367411)
+mass = 20.0
 continuous_cd = true
 script = ExtResource("5_d50sb")
 

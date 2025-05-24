@@ -9,7 +9,7 @@ public partial class Analytics : CanvasLayer
 	[Export]
 	public bool showFrameTime = true;
 	[Export]
-	public bool maxFPS = true;
+	public bool maxFPS = false;
 	[ExportCategory("GPU Advanced")]
 	[Export]
 	public bool videoMemoryUsed = false;
