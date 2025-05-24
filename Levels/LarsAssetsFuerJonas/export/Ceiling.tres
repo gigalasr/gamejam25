@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://4q2mvl7a7lek"]
+
+[resource]
+resource_name = "Ceiling"
+cull_mode = 2
+albedo_color = Color(0.436702, 0.436702, 0.436702, 1)

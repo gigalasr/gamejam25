@@ -33,6 +33,24 @@ animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
+"materials": {
+"Carpet": {
+"use_external/enabled": true,
+"use_external/path": "res://Levels/LarsAssetsFuerJonas/export/Carpet.tres"
+},
+"Ceiling": {
+"use_external/enabled": true,
+"use_external/path": "res://Levels/LarsAssetsFuerJonas/export/Ceiling.tres"
+},
+"Glow": {
+"use_external/enabled": true,
+"use_external/path": "res://Levels/LarsAssetsFuerJonas/export/Glow.tres"
+},
+"Yellow Wallpaper": {
+"use_external/enabled": true,
+"use_external/path": "res://Levels/LarsAssetsFuerJonas/export/Yellow Wallpaper.tres"
+}
+},
 "meshes": {
 "WallsAndStuff_Cube_001": {
 "generate/lightmap_uv": 0,
