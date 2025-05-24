@@ -1,0 +1,40 @@
+[gd_scene load_steps=12 format=3 uid="uid://cs23d1wgooeti"]
+
+[ext_resource type="PackedScene" uid="uid://b467abf0njcyf" path="res://Levels/01/geometry.blend" id="1_6qk21"]
+[ext_resource type="Material" uid="uid://nx2t8ketfc3k" path="res://Levels/Materials/white-tile.tres" id="2_6gl5o"]
+[ext_resource type="Material" uid="uid://d06e0mh1l4x78" path="res://Environment/Water.tres" id="3_jh6bp"]
+[ext_resource type="Material" uid="uid://cg50qw22y7uj4" path="res://Levels/Materials/blue-tiles.tres" id="4_bkxkv"]
+[ext_resource type="Texture2D" uid="uid://b2wjjfkwbjg24" path="res://Levels/Materials/base-white-tile-bl/base-white-tile_albedo.png" id="4_rh5gj"]
+[ext_resource type="Texture2D" uid="uid://bq7ih8v5b0bk0" path="res://Levels/Materials/base-white-tile-bl/base-white-tile_ao.png" id="5_erj5n"]
+[ext_resource type="Texture2D" uid="uid://bkg5v4yrjhpm8" path="res://Levels/Materials/base-white-tile-bl/base-white-tile_height.png" id="6_yi4vn"]
+[ext_resource type="Texture2D" uid="uid://dcp5dem434cn6" path="res://Levels/Materials/base-white-tile-bl/base-white-tile_metallic.png" id="7_468cc"]
+[ext_resource type="Texture2D" uid="uid://byfpaic52vpvn" path="res://Levels/Materials/base-white-tile-bl/base-white-tile_normal-ogl.png" id="8_jn6eu"]
+[ext_resource type="Texture2D" uid="uid://be7kjimv1gym5" path="res://Levels/Materials/base-white-tile-bl/base-white-tile_roughness.png" id="9_5gfgy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_erj5n"]
+albedo_texture = ExtResource("4_rh5gj")
+metallic = 1.0
+metallic_texture = ExtResource("7_468cc")
+roughness_texture = ExtResource("9_5gfgy")
+normal_enabled = true
+normal_texture = ExtResource("8_jn6eu")
+ao_enabled = true
+ao_texture = ExtResource("5_erj5n")
+heightmap_enabled = true
+heightmap_texture = ExtResource("6_yi4vn")
+uv1_scale = Vector3(10, 5, 10)
+
+[node name="geometry" instance=ExtResource("1_6qk21")]
+
+[node name="Plane" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_6gl5o")
+
+[node name="Plane_002" parent="." index="1"]
+material_override = ExtResource("3_jh6bp")
+
+[node name="Cylinder" parent="." index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_erj5n")
+surface_material_override/1 = ExtResource("4_bkxkv")
+
+[node name="Plane_001" parent="." index="3"]
+surface_material_override/0 = ExtResource("3_jh6bp")

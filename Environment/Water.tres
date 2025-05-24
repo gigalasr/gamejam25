@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://d06e0mh1l4x78"]
+
+[ext_resource type="Shader" uid="uid://crdxw36td4jgj" path="res://Environment/Water.gdshader" id="1_184bw"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_184bw")
+shader_parameter/water_color = Color(0.0625, 0.1992, 0.3594, 1)
+shader_parameter/index_of_refraction = 1.333

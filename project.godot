@@ -11,9 +11,16 @@ config_version=5
 [application]
 
 config/name="gamejam"
+run/main_scene="res://Levels/01/01.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [dotnet]
 
 project/assembly_name="gamejam"
+
+[rendering]
+
+global_illumination/voxel_gi/quality=1
+anti_aliasing/quality/msaa_3d=2
+environment/defaults/default_environment="uid://drp3oyo3t2fcf"

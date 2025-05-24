@@ -1,0 +1,39 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://drp3oyo3t2fcf"]
+
+[ext_resource type="Texture2D" uid="uid://cwy5p5ni0uxrr" path="res://Environment/vintage_measuring_lab_2k.hdr" id="1_1ckek"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_xvtig"]
+panorama = ExtResource("1_1ckek")
+energy_multiplier = 0.5
+
+[sub_resource type="Sky" id="Sky_jfeb2"]
+sky_material = SubResource("PanoramaSkyMaterial_xvtig")
+process_mode = 3
+radiance_size = 5
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_jfeb2")
+ambient_light_source = 1
+reflected_light_source = 2
+tonemap_mode = 2
+tonemap_exposure = 0.8
+ssao_enabled = true
+ssao_radius = 0.8
+ssao_intensity = 3.0
+ssil_enabled = true
+sdfgi_cascades = 8
+sdfgi_max_distance = 3276.8
+sdfgi_energy = 0.9
+glow_enabled = true
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.520763, 0.561105, 0.547444, 1)
+fog_light_energy = 3.42
+fog_density = 1.0
+fog_depth_begin = 100.0
+fog_depth_end = 500.0
+volumetric_fog_density = 0.02
+adjustment_enabled = true
+adjustment_contrast = 1.2
+adjustment_saturation = 1.2
