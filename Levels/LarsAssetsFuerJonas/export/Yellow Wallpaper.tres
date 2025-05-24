@@ -8,7 +8,7 @@
 [resource]
 resource_name = "Yellow Wallpaper"
 cull_mode = 2
-albedo_color = Color(0.845095, 0.706207, 7.70092e-07, 1)
+albedo_color = Color(0.994321, 0.776853, 0, 1)
 albedo_texture = ExtResource("1_wra8s")
 metallic = 1.0
 metallic_texture = ExtResource("2_tpphk")
