@@ -68,9 +68,14 @@ public partial class DimensionHud : Control
 
 	public override void _Input(InputEvent @event)
 	{
-		if (@event.IsActionPressed("DimensionShift") && maxShifts > 0){
+		if (@event.IsActionPressed("DimensionShift") && maxShifts > 0)
+		{
 			leftShifts.Text = (--maxShifts).ToString();
 			ShiftDimension(CurrentDimension);
+		}
+		else if (@event.IsActionPressed("Reset"))
+		{
+			GetTree().ReloadCurrentScene();
 		}
 	}
 

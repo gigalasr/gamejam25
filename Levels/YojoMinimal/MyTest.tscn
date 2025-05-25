@@ -1,8 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://bq7e1n047mto0"]
+[gd_scene load_steps=21 format=3 uid="uid://bq7e1n047mto0"]
 
 [ext_resource type="Script" uid="uid://b21d1wfifl55f" path="res://Levels/JonasTest/MyTest.cs" id="1_vj7uu"]
 [ext_resource type="PackedScene" uid="uid://dkaudqh7fna2u" path="res://Core-Assets/Camera.tscn" id="2_mf8c5"]
-[ext_resource type="PackedScene" uid="uid://bnvjsxj675yf3" path="res://Levels/YojoMinimal/ColorWall.tscn" id="2_wou1b"]
 [ext_resource type="PackedScene" uid="uid://fyl8i28mgjl1" path="res://Core-Assets/player.tscn" id="3_wou1b"]
 [ext_resource type="PackedScene" uid="uid://ciwlkc0rihn8v" path="res://Core-Assets/Analytics.tscn" id="4_jvpd7"]
 [ext_resource type="Script" uid="uid://ox80y6g0usuf" path="res://Core-Skripts/ColouredRigidBody.cs" id="5_vj7uu"]
@@ -47,12 +46,6 @@ points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5
 
 [node name="MyTest" type="Node3D"]
 script = ExtResource("1_vj7uu")
-
-[node name="ColorWall" parent="." node_paths=PackedStringArray("hud") instance=ExtResource("2_wou1b")]
-transform = Transform3D(10, 0, 0, 0, -4.37114e-09, -10, 0, 0.1, -4.37114e-07, 1.43982, 4.32635, -1.91942)
-skeleton = NodePath("../Floor/StaticBody3D/CollisionShape3D")
-hud = NodePath("../DimensionHud")
-dimension = 1
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
