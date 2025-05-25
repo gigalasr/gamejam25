@@ -736,3 +736,6 @@ transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 1, 0, 
 
 [node name="Cube6" parent="." instance=ExtResource("23_35l18")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05248, 1.07772, -64.5835)
+
+[node name="WallMedium" parent="." instance=ExtResource("8_u41yo")]
+transform = Transform3D(-3.15439e-08, -3.026e-08, -1, -0.692269, 0.721639, 0, 0.721639, 0.692269, -4.37114e-08, 1.03869, 4.78207, -40.1705)
