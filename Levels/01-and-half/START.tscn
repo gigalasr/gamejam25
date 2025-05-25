@@ -149,7 +149,7 @@ offset_right = 437.0
 offset_bottom = 728.0
 theme_override_fonts/font = ExtResource("8_7nv0n")
 theme_override_font_sizes/font_size = 32
-text = "Level 2"
+text = "Level 1.5"
 
 [node name="Button4" type="Button" parent="Control"]
 layout_mode = 0
@@ -159,7 +159,7 @@ offset_right = 437.0
 offset_bottom = 856.0
 theme_override_fonts/font = ExtResource("8_7nv0n")
 theme_override_font_sizes/font_size = 32
-text = "Level 3
+text = "Level 42
 "
 
 [connection signal="pressed" from="Control/Button" to="Control" method="BtnStart"]
