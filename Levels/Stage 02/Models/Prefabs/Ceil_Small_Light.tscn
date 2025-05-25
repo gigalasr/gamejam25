@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://csmwvi02b2i3x"]
+
+[ext_resource type="ArrayMesh" uid="uid://c1ylhnxxpgnxa" path="res://Levels/LarsAssetsFuerJonas/export/WallsAndStuff_Cube_005.res" id="1_mpq0y"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mpq0y"]
+points = PackedVector3Array(-0.0841487, 0.195356, 0.946667, -0.968865, -1.38778e-17, 0.0312273, -0.968865, -1.38778e-17, 0.968773, -0.0311564, -1.38778e-17, 0.0312273, -0.946732, 0.19535, 0.0842329, -0.0311564, -1.38778e-17, 0.968773, -0.113928, 0.195618, 0.0367819, -0.886003, 0.19562, 0.963226, 0.00781536, 0.103154, 1.00774, -1.00784, 0.103154, 1.00774, -1.00784, 0.103154, -0.00773764, 0.00781536, 0.103154, -0.00773764, -0.0367466, 0.19561, 0.114014, -0.963244, 0.195604, 0.88596, -0.886003, 0.19562, 0.0367737, -0.0367615, 0.195607, 0.885974, -0.113928, 0.195618, 0.963218, -0.963259, 0.195607, 0.114027, -0.053277, 0.195353, 0.0842211, -0.915839, 0.195348, 0.946631, -0.0841487, 0.195356, 0.0533325, -0.946705, 0.195345, 0.915742, -0.915839, 0.195348, 0.0533686, -0.0533035, 0.195347, 0.915754)
+
+[node name="CeilSmallLight" type="StaticBody3D"]
+
+[node name="WallsAndStuffCube005" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+mesh = ExtResource("1_mpq0y")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_mpq0y")

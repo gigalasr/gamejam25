@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbq071cwi3wtm"]
+
+[ext_resource type="Script" uid="uid://bpdix0xycyfhp" path="res://Core-Skripts/GravityInverter.cs" id="1_u5ftw"]
+[ext_resource type="PackedScene" uid="uid://b4t4l2hhn1bnc" path="res://Levels/Objects/Cube.blend" id="2_d8fjt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nlpgw"]
+size = Vector3(4, 4, 4)
+
+[node name="Cube" type="RigidBody3D"]
+mass = 1000.0
+script = ExtResource("1_u5ftw")
+
+[node name="Cube2" parent="." instance=ExtResource("2_d8fjt")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+shape = SubResource("BoxShape3D_nlpgw")

@@ -59,12 +59,10 @@ public partial class CameraController : Node3D
             playerNeck.Rotation = rotation;
 
         }
-    
         else if (@event.IsActionPressed("esc"))
         {
             Input.MouseMode = Input.MouseMode == Input.MouseModeEnum.Captured ? Input.MouseModeEnum.Visible : Input.MouseModeEnum.Captured;
         }
-        Vector3 pos = Position;
     }
 
     public void FlipCamera()

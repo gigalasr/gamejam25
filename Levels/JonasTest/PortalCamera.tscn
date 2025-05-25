@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3iqsnnglm63e"]
+[gd_scene load_steps=4 format=3 uid="uid://b3iqsnnglm63e"]
 
 [ext_resource type="Script" uid="uid://c0x6hapxhhm6q" path="res://Levels/JonasTest/PortalCamera.cs" id="1_1towo"]
+[ext_resource type="Environment" uid="uid://drp3oyo3t2fcf" path="res://Environment/DefaultEnvironemnt.tres" id="2_o56lo"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1towo"]
 
@@ -8,11 +9,14 @@
 script = ExtResource("1_1towo")
 
 [node name="SubViewport" type="SubViewport" parent="."]
-render_target_update_mode = 4
+render_target_update_mode = 3
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00501966, 0.00733781, 0.000210106)
 current = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport"]
+environment = ExtResource("2_o56lo")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, -8.74228e-08, -0.5, 0, 2, -2.18557e-08, 0, 0, 0)

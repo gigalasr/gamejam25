@@ -19,16 +19,17 @@ albedo_color = Color(0.32654, 0.720051, 0.586618, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_5ytvg"]
 material = SubResource("StandardMaterial3D_3ow0q")
 
-[node name="PortalRendering" type="Node3D" node_paths=PackedStringArray("portal1", "portal2", "portalCamera", "camera")]
+[node name="PortalRendering" type="Node3D" node_paths=PackedStringArray("portal1", "portal2", "teleportLocation", "portalCamera", "camera")]
 script = ExtResource("1_oacfr")
 portal1 = NodePath("Portal 1")
-isActive1 = true
+canTeleport = true
 portal2 = NodePath("Portal 2")
+teleportLocation = NodePath("Teleport")
 portalCamera = NodePath("PortalCamera")
 camera = NodePath("PortalCamera")
 
 [node name="Player" parent="." instance=ExtResource("2_gyoiq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.1868, 1.48349, 10.8661)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.31808, 1.48349, 10.8661)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -79,11 +80,14 @@ shape = SubResource("ConvexPolygonShape3D_tnaxi")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5874, 0)
 
 [node name="Portal 1" parent="." instance=ExtResource("7_3ow0q")]
-transform = Transform3D(4, 0, 0, 0, -4.37114e-08, -2, 0, 1, -8.74228e-08, -70, 2, -5)
+transform = Transform3D(4, 0, 0, 0, -4.37114e-08, -2, 0, 1, -8.74228e-08, 4.29182, 2, -5)
 
 [node name="Portal 2" parent="." instance=ExtResource("7_3ow0q")]
-transform = Transform3D(-4, -8.74228e-08, 7.64274e-15, 0, -4.37114e-08, -2, 3.49691e-07, -1, 8.74228e-08, -70.0325, 1.96805, -4.99916)
+transform = Transform3D(4, 0, 0, 0, -4.37114e-08, -2, 0, 1, -8.74228e-08, -55.6128, 1.96805, 1.63098)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -52.9277, 1.03033, -8.51983)
 mesh = SubResource("BoxMesh_5ytvg")
+
+[node name="Teleport" type="Node3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, -4.37114e-08, -2, 0, 1, -8.74228e-08, -13.8605, 1.96805, 1.63098)

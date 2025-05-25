@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ce3rf38nqna4g"
-path.s3tc="res://.godot/imported/grey-felt-texture.jpg-6ec53d8d07545ac8dccd9b2e54738700.s3tc.ctex"
+uid="uid://cttaai8eg8fjy"
+path.s3tc="res://.godot/imported/number_3.png-b86705e29bfd99fc1195f04ff5243ec7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Levels/Stage 02/Models/grey-felt-texture.jpg"
-dest_files=["res://.godot/imported/grey-felt-texture.jpg-6ec53d8d07545ac8dccd9b2e54738700.s3tc.ctex"]
+source_file="res://Levels/Stage 02/Level1/number_3.png"
+dest_files=["res://.godot/imported/number_3.png-b86705e29bfd99fc1195f04ff5243ec7.s3tc.ctex"]
 
 [params]
 

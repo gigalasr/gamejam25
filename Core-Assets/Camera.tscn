@@ -4,6 +4,8 @@
 
 [node name="Camera Controller" type="Node3D" groups=["Camera"]]
 script = ExtResource("1_tsu0j")
+bobbingAmplitude = 0.05
+bobbingFrquency = 0.5
 
 [node name="Camera3D" type="Camera3D" parent="." groups=["Camera"]]
 current = true
