@@ -1,0 +1,170 @@
+[gd_scene load_steps=14 format=3 uid="uid://di8mrwe7hhbeu"]
+
+[ext_resource type="PackedScene" uid="uid://bdo8seubpnl1o" path="res://Levels/01-and-half/geo.blend" id="1_hhnkh"]
+[ext_resource type="Material" uid="uid://nx2t8ketfc3k" path="res://Levels/Materials/white-tile.tres" id="2_l6qkc"]
+[ext_resource type="VoxelGIData" uid="uid://c43q7jrits0f8" path="res://Levels/01-and-half/01-and-half.VoxelGI_data.res" id="3_bbnp8"]
+[ext_resource type="Texture2D" uid="uid://cwy5p5ni0uxrr" path="res://Environment/vintage_measuring_lab_2k.hdr" id="4_yrdx2"]
+[ext_resource type="Shader" uid="uid://crdxw36td4jgj" path="res://Environment/Water.gdshader" id="5_a8olf"]
+[ext_resource type="Texture2D" uid="uid://dh21d8erudx3k" path="res://Environment/Water 0175bnormal.jpg" id="6_0wstb"]
+[ext_resource type="FontFile" uid="uid://ct8454xc1k2g1" path="res://fonts/HelpMe.ttf" id="8_7nv0n"]
+[ext_resource type="Script" uid="uid://75sqoxvbjlnb" path="res://Levels/01-and-half/EpicUiController.cs" id="8_rxxhn"]
+[ext_resource type="PackedScene" uid="uid://8324is441s4y" path="res://Levels/Objects/wetfloor/WetFloorSign_01_4k.blend" id="11_11ybu"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_xvtig"]
+panorama = ExtResource("4_yrdx2")
+energy_multiplier = 0.5
+
+[sub_resource type="Sky" id="Sky_jfeb2"]
+sky_material = SubResource("PanoramaSkyMaterial_xvtig")
+process_mode = 3
+radiance_size = 5
+
+[sub_resource type="Environment" id="Environment_xyyk7"]
+background_mode = 2
+sky = SubResource("Sky_jfeb2")
+ambient_light_source = 1
+reflected_light_source = 2
+tonemap_mode = 2
+tonemap_exposure = 0.8
+ssao_enabled = true
+ssao_radius = 0.8
+ssao_intensity = 3.0
+ssil_enabled = true
+sdfgi_cascades = 8
+sdfgi_max_distance = 3276.8
+sdfgi_energy = 0.9
+glow_enabled = true
+fog_light_color = Color(0.512901, 0.608725, 0.675854, 1)
+fog_depth_begin = 0.0
+fog_depth_end = 500.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1137
+volumetric_fog_emission = Color(0.176419, 0.176419, 0.176419, 1)
+volumetric_fog_length = 133.33
+adjustment_enabled = true
+adjustment_contrast = 1.2
+adjustment_saturation = 1.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xm888"]
+render_priority = 0
+shader = ExtResource("5_a8olf")
+shader_parameter/normal_map_texture = ExtResource("6_0wstb")
+shader_parameter/water_color = Color(0.446597, 0.662296, 0.932577, 1)
+shader_parameter/index_of_refraction = 1.0
+shader_parameter/scale = 5.0
+shader_parameter/time_scale = 0.005
+
+[node name="01-and-half" type="Node3D"]
+
+[node name="geo" parent="." instance=ExtResource("1_hhnkh")]
+
+[node name="Plane" parent="geo" index="0"]
+surface_material_override/0 = ExtResource("2_l6qkc")
+
+[node name="VoxelGI" type="VoxelGI" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.5386, 1.90955, -29.5434)
+subdiv = 3
+size = Vector3(67.1577, 6.58374, 63.2361)
+data = ExtResource("3_bbnp8")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xyyk7")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.2193, -0.301656, -29.7802)
+transparency = 0.3
+size = Vector3(75.943, 1, 71.4951)
+material = SubResource("ShaderMaterial_xm888")
+
+[node name="WetFloorSign_01_4k" parent="." instance=ExtResource("11_11ybu")]
+transform = Transform3D(-0.836822, 0, 0.547476, 0, 1, 0, -0.547476, 0, -0.836822, 33.0006, -1.19209e-07, -5.06394)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.4901, 1.06009, -2.11311)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_rxxhn")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 192.0
+offset_right = 578.0
+offset_bottom = 266.0
+theme_override_fonts/font = ExtResource("8_7nv0n")
+theme_override_font_sizes/font_size = 64
+text = "Wet Floor"
+
+[node name="Label" type="Label" parent="Control/Label"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 758.0
+offset_top = 630.0
+offset_right = 1278.0
+offset_bottom = 742.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("8_7nv0n")
+theme_override_font_sizes/font_size = 32
+text = "Made by
+Johannes, Lars and Jonas"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 384.0
+offset_right = 437.0
+offset_bottom = 472.0
+theme_override_fonts/font = ExtResource("8_7nv0n")
+theme_override_font_sizes/font_size = 32
+text = "START"
+
+[node name="Button2" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 512.0
+offset_right = 437.0
+offset_bottom = 600.0
+theme_override_fonts/font = ExtResource("8_7nv0n")
+theme_override_font_sizes/font_size = 32
+text = "Level 1"
+
+[node name="Button3" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 640.0
+offset_right = 437.0
+offset_bottom = 728.0
+theme_override_fonts/font = ExtResource("8_7nv0n")
+theme_override_font_sizes/font_size = 32
+text = "Level 2"
+
+[node name="Button4" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 768.0
+offset_right = 437.0
+offset_bottom = 856.0
+theme_override_fonts/font = ExtResource("8_7nv0n")
+theme_override_font_sizes/font_size = 32
+text = "Level 3
+"
+
+[connection signal="pressed" from="Control/Button" to="Control" method="BtnStart"]
+[connection signal="pressed" from="Control/Button2" to="Control" method="BtnL1"]
+[connection signal="pressed" from="Control/Button3" to="Control" method="BtnL2"]
+[connection signal="pressed" from="Control/Button4" to="Control" method="BtnL3"]
+
+[editable path="geo"]

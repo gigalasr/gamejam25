@@ -159,7 +159,7 @@ bobbingAmplitude = 0.1
 bobbingFrquency = 0.1
 
 [node name="Player" parent="." instance=ExtResource("9_8fmyj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.3629, 22.0444, 81.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.8883, -17.7154, -335.82)
 canDoubleJump = true
 
 [node name="MensaMeasured" parent="." instance=ExtResource("12_0r22y")]
@@ -364,9 +364,10 @@ randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_gko2q")
 draw_pass_1 = SubResource("PointMesh_icacn")
 
-[node name="ColorWall" parent="." instance=ExtResource("24_ediek")]
+[node name="ColorWall" parent="." node_paths=PackedStringArray("hud") instance=ExtResource("24_ediek")]
 transform = Transform3D(5.685, 0, 0, 0, -1.83588e-09, -7.14, 0, 0.042, -3.12099e-07, 23.5368, 19.8496, 76.5874)
 transparency = 0.25
+hud = NodePath("../DimensionHud")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10.3599, -13.8045, -274.66)
