@@ -25,9 +25,11 @@ public partial class DimensionHud : Control
 
 	[Export]
 	public int greenDimension;
+	[Export]
+	public bool ignoreMaxShifts = false;
 
 
-	public EDimension CurrentDimension{get; private set;}
+	public EDimension CurrentDimension { get; private set; }
 
 	private TextureRect dimTexture;
 	private Label hint;
@@ -38,7 +40,7 @@ public partial class DimensionHud : Control
 		dimTexture = GetNode<TextureRect>("Dim");
 		hint = GetNode<Label>("VBoxContainer/Hint");
 		leftShifts = GetNode<Label>("VBoxContainer/ShiftsLeft");
-		leftShifts.Text = maxShifts.ToString();
+		if(!ignoreMaxShifts)leftShifts.Text = maxShifts.ToString();
 		SetStartDimension();
 		SetDimIcon();
 	}
@@ -68,9 +70,9 @@ public partial class DimensionHud : Control
 
 	public override void _Input(InputEvent @event)
 	{
-		if (@event.IsActionPressed("DimensionShift") && maxShifts > 0)
+		if (@event.IsActionPressed("DimensionShift") && (maxShifts > 0 || ignoreMaxShifts))
 		{
-			leftShifts.Text = (--maxShifts).ToString();
+			if(!ignoreMaxShifts)leftShifts.Text = (--maxShifts).ToString();
 			ShiftDimension(CurrentDimension);
 		}
 		else if (@event.IsActionPressed("Reset"))
