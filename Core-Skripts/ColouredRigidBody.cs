@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class ColouredRigidBody : GravityInverter
 {
@@ -41,14 +42,26 @@ public partial class ColouredRigidBody : GravityInverter
                 break;
         }
 
-        foreach (Node child in GetChildren())
+        Stack<Node> to_visit = new Stack<Node>();
+        to_visit.Push(this);
+
+        while (to_visit.Count != 0)
         {
+            Node child = to_visit.Pop();
+            foreach (Node c in child.GetChildren())
+            {
+                to_visit.Push(c);
+            }
+
             MeshInstance3D mesh = child as MeshInstance3D;
             if (mesh != null)
             {
+                GD.Print(mesh.Name);
                 mesh.MaterialOverlay = material;
             }
         }
+
+
     }
 
     private void DimensionShift()

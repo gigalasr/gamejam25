@@ -37,7 +37,7 @@ public partial class ColorWall : MeshInstance3D
 				break;
 		}
 
-		MaterialOverlay = material;
+		MaterialOverride = material;
 	}
 
 	private void DimensionShift()
