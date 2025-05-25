@@ -11,9 +11,15 @@ public partial class CameraController : Node3D
     public float clampUp = 80.0f;
     [Export]
     public float clampDown = -60.0f;
+    [Export]
+    public float bobbingAmplitude = 1.0f;
+    [Export]
+    public float bobbingFrquency = 1.0f;
 
     private Node3D playerNeck;
     private PlayerController player;
+
+    private float bob = 0;
 
 
     public override void _Ready()
@@ -27,8 +33,15 @@ public partial class CameraController : Node3D
 
     public override void _PhysicsProcess(double delta)
     {
-        GlobalPosition = playerNeck.GlobalPosition;
+        // head bobbing
+        bob += (float)delta * player.currentSpeed * (player.OnFloor() ? 1 : 0);
+        Vector3 pos = Vector3.Zero;
+        pos.Y = Mathf.Sin(bob * bobbingFrquency) * bobbingAmplitude;
+        pos.X = Mathf.Cos(bob * bobbingFrquency / 2) * bobbingAmplitude;
+
+        GlobalPosition = playerNeck.GlobalPosition + pos;
         GlobalRotation = playerNeck.GlobalRotation;
+
     }
 
     public override void _UnhandledInput(InputEvent @event)
@@ -46,16 +59,20 @@ public partial class CameraController : Node3D
             playerNeck.Rotation = rotation;
 
         }
+    
         else if (@event.IsActionPressed("esc"))
         {
             Input.MouseMode = Input.MouseMode == Input.MouseModeEnum.Captured ? Input.MouseModeEnum.Visible : Input.MouseModeEnum.Captured;
         }
+        Vector3 pos = Position;
     }
 
     public void FlipCamera()
     {
         Vector3 rotation = playerNeck.Rotation;
         rotation.X = Mathf.Clamp(-rotation.X, Mathf.DegToRad(clampDown), Mathf.DegToRad(clampUp));
-        playerNeck.Rotation = rotation;
+        var tween = GetTree().CreateTween().BindNode(this);
+        tween.TweenProperty(playerNeck, "rotation", rotation, 1.0f).SetEase(Tween.EaseType.In);
+        tween.Play();
     }
 }

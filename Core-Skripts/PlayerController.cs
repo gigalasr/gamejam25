@@ -13,11 +13,17 @@ public partial class PlayerController : CharacterBody3D
     [ExportCategory("Interaction")]
     [Export]
     public float pushForce = 50.0f;
+    [Export]
+    public float animTime = 1.0f;
     [ExportCategory("Actions")]
     [Export]
     public bool canJump = true;
     [Export]
     public bool canDoubleJump = false;
+    [Export]
+    public bool airControl = true;
+
+    public float currentSpeed;
 
 
     private bool hasDoubleJumped = false;
@@ -28,6 +34,8 @@ public partial class PlayerController : CharacterBody3D
 
     private Label debugLabel;
     private CameraController camera;
+
+    private Node3D neck;
 
     public override void _Ready()
     {
@@ -54,7 +62,7 @@ public partial class PlayerController : CharacterBody3D
         }
 
         // Handle Jump.
-        if (Input.IsActionJustPressed("up"))
+        if (Input.IsActionJustPressed("up") && canJump)
         {
             if (OnFloor())
             {
@@ -69,20 +77,22 @@ public partial class PlayerController : CharacterBody3D
 
         // Get the input direction and handle the movement/deceleration.
         // As good practice, you should replace UI actions with custom gameplay actions.
+        var speed = Input.IsActionPressed("sprint") ? runningSpeed : Speed;
         Vector2 inputDir = Input.GetVector("left", "right", "forward", "backward");
         Vector3 direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
-        if (direction != Vector3.Zero)
+        if (direction != Vector3.Zero && (airControl || OnFloor()))
         {
-            velocity.X = direction.X * Speed;
-            velocity.Z = direction.Z * Speed;
+            velocity.X = direction.X * speed;
+            velocity.Z = direction.Z * speed;
         }
-        else
+        else if(OnFloor())
         {
-            velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-            velocity.Z = Mathf.MoveToward(Velocity.Z, 0, Speed);
+            velocity.X = Mathf.MoveToward(Velocity.X, 0, speed);
+            velocity.Z = Mathf.MoveToward(Velocity.Z, 0, speed);
         }
 
         Velocity = velocity;
+        currentSpeed = velocity.Dot(velocity);
         MoveAndSlide();
 
         /// handle push collisions
@@ -111,7 +121,7 @@ public partial class PlayerController : CharacterBody3D
         GD.Print(playerGravityModifier);
     }
 
-    private bool OnFloor()
+    public bool OnFloor()
     {
         if (playerGravityModifier == 1)
         {
@@ -133,8 +143,12 @@ public partial class PlayerController : CharacterBody3D
         ignoreGravityInvert = false;
         if (playerGravityModifier != gravityModifier)
         {
-            RotateObjectLocal(Vector3.Right, Mathf.Pi);
-            RotateObjectLocal(Vector3.Up, Mathf.Pi);
+            // animte with tween
+            var tween = GetTree().CreateTween().BindNode(this).SetTrans(Tween.TransitionType.Elastic);
+            var rotation = Rotation + new Vector3(Mathf.Pi, Mathf.Pi, 0);
+            tween.TweenProperty(this, "rotation", rotation, animTime);
+            tween.Play();
+
             camera.FlipCamera();
         }
         playerGravityModifier = gravityModifier;
