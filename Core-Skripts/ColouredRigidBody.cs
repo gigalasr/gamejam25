@@ -16,6 +16,11 @@ public partial class ColouredRigidBody : GravityInverter
 
     private float initialMass;
 
+    public override void _ExitTree()
+    {
+        SignalBus.Instance.OnDimensionShift -= DimensionShift;
+    }
+
     public override void _Ready()
     {
         base._Ready();

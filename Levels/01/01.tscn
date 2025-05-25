@@ -185,6 +185,7 @@ maxShifts = 100
 blueDimension = 1
 yellowDimension = 1
 redDimension = -1
+ignoreMaxShifts = true
 
 [node name="Cube3" parent="." node_paths=PackedStringArray("hud") instance=ExtResource("13_jx11f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9936, -17, -262.224)

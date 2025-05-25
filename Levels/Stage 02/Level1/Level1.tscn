@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://8wu8gtl0sqm4"]
+[gd_scene load_steps=36 format=3 uid="uid://8wu8gtl0sqm4"]
 
 [ext_resource type="Script" uid="uid://pq0u33m63es" path="res://Levels/Stage 02/Level1.cs" id="1_vhn6l"]
 [ext_resource type="PackedScene" uid="uid://fyl8i28mgjl1" path="res://Core-Assets/player.tscn" id="2_h5lfm"]
@@ -17,16 +17,46 @@
 [ext_resource type="VoxelGIData" uid="uid://csufuxvgpla44" path="res://Levels/Stage 02/Models/Prefabs/Level1.VoxelGI_data.res" id="15_vkoqn"]
 [ext_resource type="Environment" uid="uid://drp3oyo3t2fcf" path="res://Environment/DefaultEnvironemnt.tres" id="16_fwr0l"]
 [ext_resource type="Script" uid="uid://dq7r6oadlg5nm" path="res://Levels/JonasTest/Portal.cs" id="17_ucqv5"]
-[ext_resource type="PackedScene" uid="uid://b3iqsnnglm63e" path="res://Levels/JonasTest/PortalCamera.tscn" id="18_nq7d8"]
-[ext_resource type="PackedScene" uid="uid://cu1t0ci2cigwl" path="res://Levels/JonasTest/Portal.tscn" id="19_g02ro"]
-[ext_resource type="PackedScene" uid="uid://c6wq7x4wae3g1" path="res://Levels/Objects/PushableCube_small.tscn" id="20_r5gdf"]
+[ext_resource type="PackedScene" path="res://Levels/JonasTest/PortalCamera.tscn" id="18_nq7d8"]
+[ext_resource type="PackedScene" path="res://Levels/JonasTest/Portal.tscn" id="19_g02ro"]
+[ext_resource type="PackedScene" path="res://Levels/Objects/PushableCube_small.tscn" id="20_r5gdf"]
 [ext_resource type="Texture2D" uid="uid://cttaai8eg8fjy" path="res://Levels/Stage 02/Level1/number_3.png" id="21_0tnai"]
 [ext_resource type="Texture2D" uid="uid://cd6k6tp8cf050" path="res://Levels/Stage 02/Level1/number_2.png" id="22_k18cb"]
-[ext_resource type="PackedScene" uid="uid://bbq071cwi3wtm" path="res://Levels/Objects/Cube_small.tscn" id="23_35l18"]
-[ext_resource type="PackedScene" path="res://Core-Assets/DimensionHUD.tscn" id="24_h5lfm"]
+[ext_resource type="PackedScene" path="res://Levels/Objects/Cube_small.tscn" id="23_35l18"]
+[ext_resource type="PackedScene" uid="uid://dnsbtiswvhgw3" path="res://Core-Assets/DimensionHUD.tscn" id="24_h5lfm"]
+[ext_resource type="Script" uid="uid://ox80y6g0usuf" path="res://Core-Skripts/ColouredRigidBody.cs" id="24_m0of5"]
+[ext_resource type="Shader" uid="uid://crdxw36td4jgj" path="res://Environment/Water.gdshader" id="25_ft6i4"]
+[ext_resource type="PackedScene" uid="uid://o0sk540j12sf" path="res://Levels/Objects/table/round_wooden_table_02_4k.blend" id="25_wgyrl"]
+[ext_resource type="Texture2D" uid="uid://dh21d8erudx3k" path="res://Environment/Water 0175bnormal.jpg" id="26_m0of5"]
+[ext_resource type="PackedScene" uid="uid://b1cefovjopgjb" path="res://Levels/Objects/cake/strawberry_chocolate_cake_4k.blend" id="26_m8cr2"]
+[ext_resource type="Script" uid="uid://crsuir7obb8jq" path="res://Levels/01/LevelChanger.cs" id="26_vkbcs"]
+[ext_resource type="PackedScene" uid="uid://0sl6eju64te5" path="res://Levels/Objects/gpu_particles_3d_2.tscn" id="27_u41yo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f2f1d"]
 size = Vector3(4.5, 1, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vkbcs"]
+size = Vector3(1.68457, 4.53131, 1.46191)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yhrwh"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 2.145, 1)
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, -0.1, 0)
+linear_accel_min = -1.0
+linear_accel_max = 0.999998
+radial_accel_min = -0.100002
+radial_accel_max = 0.0999978
+scale_max = 4.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wgyrl"]
+render_priority = 0
+shader = ExtResource("25_ft6i4")
+shader_parameter/normal_map_texture = ExtResource("26_m0of5")
+shader_parameter/water_color = Color(0.242927, 0.50268, 0.815726, 1)
+shader_parameter/index_of_refraction = 1.0
+shader_parameter/scale = 5.0
+shader_parameter/time_scale = 0.005
 
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("area_3", "area_2", "cube_unmoveable")]
 script = ExtResource("1_vhn6l")
@@ -38,7 +68,7 @@ cube_unmoveable = NodePath("Cube6")
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0.855615, 1.21429, 3.89473)
 
 [node name="Player" parent="character" instance=ExtResource("2_h5lfm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.58232)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.456889, -3.40347)
 Speed = 5.5
 
 [node name="Camera Controller" parent="character" instance=ExtResource("3_ifaf5")]
@@ -735,8 +765,36 @@ texture = ExtResource("22_k18cb")
 [node name="Door" parent="." instance=ExtResource("9_vkbcs")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 1, 0, -65)
 
-[node name="Cube6" parent="." instance=ExtResource("23_35l18")]
+[node name="Cube6" parent="." node_paths=PackedStringArray("hud") instance=ExtResource("23_35l18")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05248, 1.07772, -64.5835)
+script = ExtResource("24_m0of5")
+hud = NodePath("../DimensionHud")
+dimension = 2
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Cube6"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4.55254, -7.8)
+light_color = Color(1, 1, 0.819608, 1)
+light_energy = 10.0
+shadow_enabled = true
+spot_range = 10.0093
+
+[node name="round_wooden_table_02_4k" parent="Cube6" instance=ExtResource("25_wgyrl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0271552, -0.800004, -7.65017)
+
+[node name="Area3D" type="Area3D" parent="Cube6/round_wooden_table_02_4k"]
+script = ExtResource("26_vkbcs")
+newSceneName = "res://Levels/Stage 02/Level1/Level1.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube6/round_wooden_table_02_4k/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.24774, 0)
+shape = SubResource("BoxShape3D_vkbcs")
+
+[node name="blend_export" parent="Cube6" instance=ExtResource("26_m8cr2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0340383, -0.0523529, -7.66267)
+
+[node name="GPUParticles3D2" parent="Cube6" instance=ExtResource("27_u41yo")]
+transform = Transform3D(0.0152186, 0, 0.999884, 0, 1, 0, -0.999884, 0, 0.0152186, -0.0425812, 1.28933, -7.75552)
+process_material = SubResource("ParticleProcessMaterial_yhrwh")
 
 [node name="WallMedium" parent="." instance=ExtResource("8_u41yo")]
 transform = Transform3D(-3.15439e-08, -3.026e-08, -1, -0.692269, 0.721639, 0, 0.721639, 0.692269, -4.37114e-08, 1.03869, 4.78207, -40.1705)
@@ -745,3 +803,9 @@ transform = Transform3D(-3.15439e-08, -3.026e-08, -1, -0.692269, 0.721639, 0, 0.
 blueDimension = 1
 yellowDimension = -1
 ignoreMaxShifts = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.936203, 0.048645, -40.0729)
+material_override = SubResource("ShaderMaterial_wgyrl")
+transparency = 0.4
+size = Vector3(100, 0.903, 100)

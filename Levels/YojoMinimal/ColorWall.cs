@@ -12,6 +12,12 @@ public partial class ColorWall : MeshInstance3D
 	public EDimension dimension;
 
 	private CollisionShape3D shape;
+
+    public override void _ExitTree()
+    {
+		SignalBus.Instance.OnDimensionShift -= DimensionShift;
+    }
+
 	public override void _Ready()
 	{
 		shape = GetNode<CollisionShape3D>("StaticBody3D/CollisionShape3D");
