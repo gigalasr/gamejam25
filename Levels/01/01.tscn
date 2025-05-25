@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cw6tbiybqcibv"]
+[gd_scene load_steps=41 format=3 uid="uid://cw6tbiybqcibv"]
 
 [ext_resource type="Environment" uid="uid://drp3oyo3t2fcf" path="res://Environment/DefaultEnvironemnt.tres" id="1_qhikt"]
 [ext_resource type="Script" uid="uid://cg0baidpf5gfb" path="res://Levels/01/Level01.cs" id="1_rwrmq"]
@@ -12,13 +12,20 @@
 [ext_resource type="PackedScene" uid="uid://b5g2hprsrrmio" path="res://Levels/Objects/Cube.tscn" id="10_8fmyj"]
 [ext_resource type="PackedScene" uid="uid://dkaudqh7fna2u" path="res://Core-Assets/Camera.tscn" id="10_rwrmq"]
 [ext_resource type="PackedScene" uid="uid://dpprxgbxfcrwl" path="res://Levels/Objects/duck/MensaMeasured.blend" id="12_0r22y"]
-[ext_resource type="PackedScene" path="res://Core-Assets/DimensionHUD.tscn" id="12_luwbn"]
+[ext_resource type="PackedScene" uid="uid://dnsbtiswvhgw3" path="res://Core-Assets/DimensionHUD.tscn" id="12_luwbn"]
 [ext_resource type="PackedScene" uid="uid://b0uw2dlg45vbi" path="res://Levels/Objects/PushableCube.tscn" id="13_jx11f"]
 [ext_resource type="PackedScene" uid="uid://meb8l76qalcj" path="res://Levels/Objects/duck/rubber_duck_toy_4k.blend" id="14_bs6m5"]
 [ext_resource type="PackedScene" uid="uid://c4lrvcdmoa4jg" path="res://Levels/Objects/car/concrete_cat_statue_4k.blend" id="16_xtjpt"]
 [ext_resource type="PackedScene" uid="uid://def2373363ffv" path="res://Levels/Objects/drill/Drill_01_4k.blend" id="17_4r5pd"]
+[ext_resource type="Script" uid="uid://ox80y6g0usuf" path="res://Core-Skripts/ColouredRigidBody.cs" id="17_uaduf"]
 [ext_resource type="PackedScene" uid="uid://d1bdacvruodyu" path="res://Levels/Objects/industrial_railing_1_long.tscn" id="18_icacn"]
 [ext_resource type="PackedScene" uid="uid://cpb0urpwbflk6" path="res://Levels/Objects/railing_corner.tscn" id="19_hbmcq"]
+[ext_resource type="PackedScene" uid="uid://8324is441s4y" path="res://Levels/Objects/wetfloor/WetFloorSign_01_4k.blend" id="20_0k8nj"]
+[ext_resource type="Script" uid="uid://bpdix0xycyfhp" path="res://Core-Skripts/GravityInverter.cs" id="20_vnhyr"]
+[ext_resource type="PackedScene" uid="uid://c8raworgeywh3" path="res://Levels/Objects/sofa/sofa_02_4k.blend" id="21_vgyua"]
+[ext_resource type="PackedScene" uid="uid://q4iu3p0rfywb" path="res://Levels/Objects/elephant/carved_wooden_elephant_4k.blend" id="22_gko2q"]
+[ext_resource type="PackedScene" uid="uid://bnvjsxj675yf3" path="res://Levels/YojoMinimal/ColorWall.tscn" id="24_ediek"]
+[ext_resource type="FontFile" uid="uid://ct8454xc1k2g1" path="res://fonts/HelpMe.ttf" id="26_pksp2"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_f8xtr"]
 dof_blur_far_distance = 55.84
@@ -56,6 +63,29 @@ material = SubResource("StandardMaterial3D_4r5pd")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hbmcq"]
 size = Vector3(38, 2, 38)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pksp2"]
+size = Vector3(79.3037, 3.11029, 67.2944)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gko2q"]
+points = PackedVector3Array(0.114765, 0.636634, 0.0115735, -0.154996, -0.0027335, 0.141417, -0.154996, -0.0027335, 0.17141, 0.154758, -0.0027335, 0.141417, -0.134985, 0.586628, -0.0184389, 0.154758, 0.0272447, 0.17141, -0.134985, 0.606655, 0.0215528, 0.134746, 0.586628, -0.0184389, -0.154996, 0.107166, 0.151414, 0.154758, 0.526734, 0.0415301, -0.154996, 0.55665, 0.00155697, 0.154758, 0.0272447, 0.131437, -0.111923, 0.628062, -0.0158938, 0.154758, 0.526734, 0.00155697, -0.154996, 0.0272447, 0.131437, 0.134746, 0.606655, 0.0215528, 0.154758, -0.0027335, 0.17141, -0.154996, 0.526734, 0.0415301, 0.111685, 0.628062, -0.0158938, -0.115003, 0.636634, 0.0115735, -0.154996, 0.0272447, 0.17141, 0.154758, 0.107166, 0.151414, -0.154996, 0.526734, 0.00155697, -0.134985, 0.606655, -0.0184389, 0.134746, 0.606655, -0.0184389, 0.154758, 0.376844, 0.0814661, 0.154758, 0.55665, 0.00155697, -0.154996, 0.376844, 0.0814661, -0.154996, 0.55665, 0.0315322, 0.154758, 0.55665, 0.0315322, 0.144752, 0.586628, 0.0215528, 0.154758, 0.217065, 0.0814661)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vnhyr"]
+points = PackedVector3Array(-0.154996, -0.0027335, -0.198296, -0.154996, -0.0027335, -0.168296, 0.154758, -0.0027335, -0.198296, -0.134985, 0.606655, -0.0484209, -0.154996, 0.536685, -0.0284388, 0.154758, 0.0672364, -0.148314, 0.154758, 0.496756, -0.078403, 0.154758, 0.536685, -0.0284388, -0.154996, 0.0272447, -0.198296, 0.154758, 0.0272447, -0.198296, 0.114765, 0.636634, -0.0384387, -0.11233, 0.629194, -0.0205317, -0.154996, 0.496756, -0.078403, 0.154758, -0.0027335, -0.168296, -0.154996, 0.336915, -0.078403, 0.134746, 0.576677, -0.0184389, 0.154758, 0.227078, -0.148314, -0.134985, 0.576677, -0.0184389, -0.154996, 0.0672364, -0.148314, 0.154758, 0.336915, -0.078403, -0.154996, 0.227078, -0.148314, -0.115003, 0.636634, -0.0384387, 0.134746, 0.606655, -0.0484209, 0.112092, 0.629194, -0.0205317, -0.154996, 0.55665, -0.0584208, 0.154758, 0.55665, -0.0584208, -0.154996, 0.55665, -0.0284388, 0.154758, 0.55665, -0.0284388, 0.124771, 0.62662, -0.0384387, -0.125009, 0.62662, -0.0384387)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gko2q"]
+emission_shape = 3
+emission_box_extents = Vector3(1.31, 2.505, 1.605)
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, -0.1, 0)
+linear_accel_min = -1.0
+linear_accel_max = 0.999998
+radial_accel_min = -0.100002
+radial_accel_max = 0.0999978
+scale_max = 4.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_uaduf"]
+viewport_path = NodePath("SubViewport")
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_rwrmq")
@@ -124,9 +154,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5167, 11.347, -43.4798)
 
 [node name="Camera Controller" parent="." instance=ExtResource("10_rwrmq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.961, -21.3378, -206.444)
+mouseSensitivity = 0.5
+bobbingAmplitude = 0.1
+bobbingFrquency = 0.1
 
 [node name="Player" parent="." instance=ExtResource("9_8fmyj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.0873, -17.7885, -302.542)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.1892, -16.2362, -334.374)
 canDoubleJump = true
 
 [node name="MensaMeasured" parent="." instance=ExtResource("12_0r22y")]
@@ -148,12 +181,37 @@ shape = SubResource("BoxShape3D_luwbn")
 debug_color = Color(0.997418, 0, 0.166377, 0.42)
 
 [node name="DimensionHud" parent="." instance=ExtResource("12_luwbn")]
-maxShifts = 16
+maxShifts = 100
 blueDimension = 1
-yellowDimension = -1
+yellowDimension = 1
+redDimension = -1
 
-[node name="Cube3" parent="." instance=ExtResource("13_jx11f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, -17, -261)
+[node name="Cube3" parent="." node_paths=PackedStringArray("hud") instance=ExtResource("13_jx11f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9936, -17, -262.224)
+script = ExtResource("17_uaduf")
+hud = NodePath("../DimensionHud")
+dimension = 1
+
+[node name="Cube" parent="Cube3/Cube2" index="0"]
+surface_material_override/0 = null
+
+[node name="Cube5" parent="." node_paths=PackedStringArray("hud") instance=ExtResource("13_jx11f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4507, -17, -262.224)
+script = ExtResource("17_uaduf")
+hud = NodePath("../DimensionHud")
+dimension = 1
+
+[node name="Cube" parent="Cube5/Cube2" index="0"]
+surface_material_override/0 = null
+
+[node name="Cube6" parent="." node_paths=PackedStringArray("hud") instance=ExtResource("13_jx11f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.9328, -12.5719, -262.224)
+script = ExtResource("17_uaduf")
+hud = NodePath("../DimensionHud")
+dimension = 1
+
+[node name="Cube" parent="Cube6/Cube2" index="0"]
+surface_material_override/0 = null
 
 [node name="Cube4" parent="." instance=ExtResource("13_jx11f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.6, 13, -1.3)
@@ -164,8 +222,14 @@ transform = Transform3D(-3.49691e-07, 0, -8, 0, 8, 0, 8, 0, -3.49691e-07, 79, 12
 [node name="concrete_cat_statue_4k" parent="." instance=ExtResource("16_xtjpt")]
 transform = Transform3D(-4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, -10, 12, -9)
 
-[node name="Cube2" parent="." instance=ExtResource("13_jx11f")]
+[node name="Cube2" parent="." node_paths=PackedStringArray("hud") instance=ExtResource("13_jx11f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5, 10.2, -162.9)
+script = ExtResource("17_uaduf")
+hud = NodePath("../DimensionHud")
+dimension = 2
+
+[node name="Cube" parent="Cube2/Cube2" index="0"]
+surface_material_override/0 = null
 
 [node name="Television_01_4k" parent="." instance=ExtResource("8_647ye")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 14.6, 13.5, -147.6)
@@ -276,7 +340,77 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, -14, -284)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, -4.5, 4.5)
 shape = SubResource("BoxShape3D_hbmcq")
 
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Node3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.1519, -8.76397, -55.8189)
+shape = SubResource("BoxShape3D_pksp2")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Node3D"]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 23.8, -25.1699, -194.6)
+script = ExtResource("20_vnhyr")
+
+[node name="WetFloorSign_01_4k2" parent="Node3D/RigidBody3D" instance=ExtResource("20_0k8nj")]
+transform = Transform3D(5, 0, 3.55271e-14, 0, 5, 0, -3.55271e-14, 0, 5, 0, 0, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Node3D/RigidBody3D"]
+transform = Transform3D(5, 0, 5.68434e-14, 0, 5, 0, -5.68434e-14, 0, 5, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_gko2q")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Node3D/RigidBody3D"]
+transform = Transform3D(5, 0, 5.68434e-14, 0, 5, 0, -5.68434e-14, 0, 5, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_vnhyr")
+
+[node name="WetFloorSign_01_4k" parent="Node3D" instance=ExtResource("20_0k8nj")]
+transform = Transform3D(0, 0, 5, 0, 5, 0, -5, 0, 0, 13.2, 12.8, -81.6)
+
+[node name="sofa_02_4k" parent="." instance=ExtResource("21_vgyua")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 13, 12.7, -65)
+
+[node name="carved_wooden_elephant_4k" parent="." instance=ExtResource("22_gko2q")]
+transform = Transform3D(-15, 0, -1.43051e-06, 0, 15, 0, 1.43051e-06, 0, -15, 12.8, 13.6, -50.2)
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="carved_wooden_elephant_4k"]
+transform = Transform3D(-6.88748e-09, 0, -0.133333, 0, 0.133333, 0, 0.133333, 0, -6.88748e-09, -0.00666672, 0.333333, -0.013334)
+amount = 64
+lifetime = 5.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_gko2q")
+draw_pass_1 = SubResource("PointMesh_icacn")
+
+[node name="ColorWall" parent="." node_paths=PackedStringArray("hud") instance=ExtResource("24_ediek")]
+transform = Transform3D(5.685, 0, 0, 0, -1.83588e-09, -7.14, 0, 0.042, -3.12099e-07, 23.5368, 19.8496, 76.5874)
+transparency = 0.25
+hud = NodePath("../DimensionHud")
+dimension = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10.3599, -13.8045, -274.66)
+texture = SubResource("ViewportTexture_uaduf")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+sdf_oversize = 2
+
+[node name="Label" type="Label" parent="SubViewport"]
+offset_right = 512.0
+offset_bottom = 512.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("26_pksp2")
+theme_override_font_sizes/font_size = 64
+text = "Press F"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+
+[editable path="Cube3"]
+[editable path="Cube3/Cube2"]
+[editable path="Cube5"]
+[editable path="Cube5/Cube2"]
+[editable path="Cube6"]
+[editable path="Cube6/Cube2"]
+[editable path="Cube2"]
+[editable path="Cube2/Cube2"]
+[editable path="Node3D/RigidBody3D/WetFloorSign_01_4k2"]

@@ -40,4 +40,14 @@ public partial class SignalBus : Node
     {
         OnPlayerRecogniseGravityInvert?.Invoke();
     }
+
+    
+    /// <summary>
+    /// Dimension has Changed. Trigger to change physics in world
+    /// </summary>
+    public event Action OnDimensionShift;
+    public void DimensionShift()
+    {
+        OnDimensionShift?.Invoke();
+    }
 }
