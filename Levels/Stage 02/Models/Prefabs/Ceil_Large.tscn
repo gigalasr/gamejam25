@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnfx20erw1fh3"]
+
+[ext_resource type="ArrayMesh" uid="uid://ctaxx1kf5tr5d" path="res://Levels/LarsAssetsFuerJonas/export/WallsAndStuff_Cube_020.res" id="1_0bgxo"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0bgxo"]
+points = PackedVector3Array(1.97602, 0.214286, 0.97579, -1.02381, -0.0238095, -2.02351, -1.02381, -0.0238095, 1.02351, 2.02375, -0.0238095, -2.02351, -0.976079, 0.214286, -1.97579, 2.02375, -0.0238095, 1.02351, -0.976079, 0.214286, 0.97579, 1.97602, 0.214286, -1.97579)
+
+[node name="CeilLarge" type="StaticBody3D"]
+
+[node name="WallsAndStuffCube020" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+mesh = ExtResource("1_0bgxo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_0bgxo")

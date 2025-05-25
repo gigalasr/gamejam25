@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqe81oqn4a0dp"]
+
+[ext_resource type="ArrayMesh" uid="uid://cgr80etjdl7rb" path="res://Levels/LarsAssetsFuerJonas/export/WallsAndStuff_Cube_022.res" id="1_qnled"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qnled"]
+size = Vector3(5.00133, 0.215454, 4.99924)
+
+[node name="CeilXLarge" type="StaticBody3D"]
+
+[node name="WallsAndStuffCube022" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+mesh = ExtResource("1_qnled")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 1.49987, -0.0944215, 1.48509)
+shape = SubResource("BoxShape3D_qnled")

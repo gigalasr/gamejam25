@@ -22,4 +22,9 @@ public partial class GravityInverter : RigidBody3D
 			Sleeping = false;
 		}
 	}
+
+    public override void _ExitTree()
+    {
+        SignalBus.Instance.OnGravityInvert -= GravityInvert;
+    }
 }

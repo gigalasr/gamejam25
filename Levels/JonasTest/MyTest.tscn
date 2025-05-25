@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dkaudqh7fna2u" path="res://Core-Assets/Camera.tscn" id="2_4hmin"]
 [ext_resource type="PackedScene" uid="uid://ciwlkc0rihn8v" path="res://Core-Assets/Analytics.tscn" id="3_potjm"]
 [ext_resource type="Script" uid="uid://bpdix0xycyfhp" path="res://Core-Skripts/GravityInverter.cs" id="5_d50sb"]
-[ext_resource type="PackedScene" uid="uid://dnsbtiswvhgw3" path="res://Core-Assets/DimensionHUD.tscn" id="6_5w2m1"]
+[ext_resource type="PackedScene" path="res://Core-Assets/DimensionHUD.tscn" id="6_5w2m1"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4hmin"]
 
@@ -78,11 +78,9 @@ transform = Transform3D(0.122084, 0.924248, -0.361747, -0.0756595, 0.372079, 0.9
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.833, 0.42524, -5.10487)
 clampUp = 75.0
 clampDown = -50.0
-bobbingAmplitude = 0.05
-bobbingFrquency = 0.5
 
 [node name="Player" parent="Character" instance=ExtResource("1_4qhqw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31346, 2.47312, 4.70033)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.301924, 2.47312, 4.5837)
 Speed = 5.0
 airControl = false
 

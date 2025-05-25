@@ -7,15 +7,15 @@ public partial class Portal : Node3D
     [Export]
     public MeshInstance3D portal1;
     [Export]
-    public bool isActive1 = false;
+    public bool canTeleport = false;
+    [Export]
+    public bool staticImage = true;
     [ExportCategory("Portal 2 Settings")]
     [Export]
     public MeshInstance3D portal2;
-    [Export]
-    public bool isActive2 = false;
     [ExportCategory("General Settings")]
     [Export]
-    public bool useAsMirror = false;
+    public Node3D teleportLocation;
     [Export]
     public Node3D portalCamera;
     [Export]
@@ -41,29 +41,28 @@ public partial class Portal : Node3D
             Shape = shape
         };
         portal1.GetChild(0).AddChild(collisionShape);
+        var body = portal1.GetNode<StaticBody3D>("StaticBody3D");
+        if (canTeleport)
+        {
+            body.CollisionLayer = 0;
+            body.CollisionMask = 0;
+        }
 
-        // portal 2
-        mesh = portal2.Mesh;
-        shape = mesh.CreateConvexShape();
+        // portal 1 Area3D
+        var area = new Area3D();
         collisionShape = new CollisionShape3D
         {
             Shape = shape
         };
-        portal2.GetChild(0).AddChild(collisionShape);
+        area.AddChild(collisionShape);
+        area.BodyEntered += OnBodyEnter;
+        portal1.AddChild(area);
+
 
         player = GetTree().GetFirstNodeInGroup("Player") as Node3D; ;
 
-
-        if (isActive1)
-        {
-            activePortal = portal1;
-            otherPortal = portal2;
-        }
-        else
-        {
-            activePortal = portal2;
-            otherPortal = portal1;
-        }
+        activePortal = portal1;
+        otherPortal = portal2;
 
         //init camera
         var scale = new Vector2(activePortal.Scale.X, activePortal.Scale.Y);
@@ -71,7 +70,16 @@ public partial class Portal : Node3D
 
         otherPortal.Hide();
         material.AlbedoColor = new Color(3, 3, 3);
+        material.AlbedoTexture = camera.GetViewPortTexture();
         activePortal.SetSurfaceOverrideMaterial(0, material);
+        
+    }
+
+    private void OnBodyEnter(Node3D body)
+    {
+        if (!canTeleport) return;
+        if (body is CharacterBody3D)body.GlobalPosition = teleportLocation.GlobalPosition;
+        
     }
 
     public override void _PhysicsProcess(double delta)
@@ -84,6 +92,8 @@ public partial class Portal : Node3D
         distance = distance.Rotated(Vector3.Right, -rotationDelta.X);
         distance = distance.Rotated(Vector3.Up, -rotationDelta.Y);
         distance = distance.Rotated(Vector3.Forward, rotationDelta.Z);
+
+        distance = staticImage ? distance.Normalized() : distance;
 
         // set camera position and rotation
         portalCamera.LookAtFromPosition(otherPortal.GlobalPosition - distance, otherPortal.GlobalPosition, Vector3.Up);
