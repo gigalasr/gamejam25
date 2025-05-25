@@ -37,6 +37,13 @@ public partial class PlayerController : CharacterBody3D
 
     private Node3D neck;
 
+    public override void _ExitTree()
+    {
+        SignalBus.Instance.OnGravityInvert -= InvertGravity;
+        SignalBus.Instance.OnPlayerIgnoreGravityInvert -= IgnoreGravityInvert;
+        SignalBus.Instance.OnPlayerRecogniseGravityInvert -= RecogniseGravityInvert;
+    }
+
     public override void _Ready()
     {
         SignalBus.Instance.OnGravityInvert += InvertGravity;

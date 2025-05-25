@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://bnvjsxj675yf3" path="res://Levels/YojoMinimal/ColorWall.tscn" id="24_ediek"]
 [ext_resource type="FontFile" uid="uid://ct8454xc1k2g1" path="res://fonts/HelpMe.ttf" id="26_pksp2"]
 [ext_resource type="PackedScene" uid="uid://b1cefovjopgjb" path="res://Levels/Objects/cake/strawberry_chocolate_cake_4k.blend" id="27_j8cf4"]
+[ext_resource type="PackedScene" uid="uid://0sl6eju64te5" path="res://Levels/Objects/gpu_particles_3d_2.tscn" id="28_lx45x"]
 [ext_resource type="Script" uid="uid://crsuir7obb8jq" path="res://Levels/01/LevelChanger.cs" id="28_qq3d0"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_f8xtr"]
@@ -82,17 +83,6 @@ scale_max = 4.0
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_uaduf"]
 viewport_path = NodePath("SubViewport")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j8cf4"]
-emission_shape = 3
-emission_box_extents = Vector3(3.07, 1.84, 14.74)
-direction = Vector3(0, 0, 0)
-gravity = Vector3(0, -0.1, 0)
-linear_accel_min = -1.0
-linear_accel_max = 0.999998
-radial_accel_min = -0.100002
-radial_accel_max = 0.0999978
-scale_max = 4.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j8cf4"]
 size = Vector3(2.02255, 4.41931, 6.63531)
@@ -169,7 +159,7 @@ bobbingAmplitude = 0.1
 bobbingFrquency = 0.1
 
 [node name="Player" parent="." instance=ExtResource("9_8fmyj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.3629, 22.0444, 81.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.8883, -17.7154, -335.82)
 canDoubleJump = true
 
 [node name="MensaMeasured" parent="." instance=ExtResource("12_0r22y")]
@@ -195,6 +185,7 @@ maxShifts = 100
 blueDimension = 1
 yellowDimension = 1
 redDimension = -1
+ignoreMaxShifts = true
 
 [node name="Cube3" parent="." node_paths=PackedStringArray("hud") instance=ExtResource("13_jx11f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9936, -17, -262.224)
@@ -378,7 +369,6 @@ draw_pass_1 = SubResource("PointMesh_icacn")
 transform = Transform3D(5.685, 0, 0, 0, -1.83588e-09, -7.14, 0, 0.042, -3.12099e-07, 23.5368, 19.8496, 76.5874)
 transparency = 0.25
 hud = NodePath("../DimensionHud")
-dimension = 1
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10.3599, -13.8045, -274.66)
@@ -417,13 +407,8 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 22.6854, 19.8071, 93.28)
 [node name="round_wooden_table_02_4k2" parent="." instance=ExtResource("7_vldvu")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 22.6448, 18.304, 93.2168)
 
-[node name="GPUParticles3D2" type="GPUParticles3D" parent="round_wooden_table_02_4k2"]
+[node name="GPUParticles3D2" parent="round_wooden_table_02_4k2" instance=ExtResource("28_lx45x")]
 transform = Transform3D(0.0152186, 0, 0.999884, 0, 1, 0, -0.999884, 0, 0.0152186, -0.06322, 2.15183, -2.31422)
-amount = 512
-lifetime = 5.0
-randomness = 1.0
-process_material = SubResource("ParticleProcessMaterial_j8cf4")
-draw_pass_1 = SubResource("PointMesh_icacn")
 
 [node name="Area3D2" type="Area3D" parent="round_wooden_table_02_4k2"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.22874, 0)
